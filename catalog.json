@@ -1,0 +1,97 @@
+{
+ "schema": 1,
+ "updated": "(dat luc commit)",
+ "payment": {
+  "qr": "",
+  "note": ""
+ },
+ "note": "DUOC SINH RA boi BLENDER_LICENSE/tools/rollout.py --catalog. Dung sua tay: lan sinh sau se ghi de. Them san pham = them mot muc vao projects.json roi chay lai.",
+ "note_zip": "Moi addon MOT zip rieng (de cai lai va cap nhat tung cai). Zip nam trong repo RIENG TU; \"zip\" duoi day tro toi CUA KIEM, khong phai duong tai truc tiep.",
+ "note_released": "\"released\": false nghia la ban nay CHUA nam tren kho phat hanh - Hub boi xam khoi cai va khong bay nut Install/Update, chi con nut Buy. Truong do do so released.json quyet dinh, va so do chi duoc ghi boi `rollout.py --publish` SAU KHI doc lai file tren kho de doi chieu. \"version\" cung la ban DANG NAM TREN KHO, khong phai ban trong ma nguon tac gia.",
+ "products": [
+  {
+   "code": "dpmax",
+   "module": "max_importer_pro",
+   "name": "DP_MaxImporter",
+   "version": "3.34.0",
+   "free": false,
+   "price": 0,
+   "desc": "Import file .max khong can cai 3ds Max",
+   "zip": "",
+   "released": false,
+   "buy": "https://t.me/ducphan",
+   "video": "",
+   "gated": true
+  },
+  {
+   "code": "dpcabinet",
+   "module": "cabinet_draw_pro",
+   "name": "DP_CabinetDraw",
+   "version": "1.0.0",
+   "free": false,
+   "price": 0,
+   "desc": "Ve tu bep tham so: keo ra ca dan tu tren+duoi, hover doi canh",
+   "zip": "https://dp-gate.ducphan.workers.dev/dl?product=dpcabinet&file=cabinet_draw_pro-1.0.0.zip",
+   "released": true,
+   "buy": "https://t.me/ducphan",
+   "video": "",
+   "gated": true
+  },
+  {
+   "code": "dplight",
+   "module": "dp_lighting",
+   "name": "DP_Lighting Setup",
+   "version": "1.3.0",
+   "free": false,
+   "price": 0,
+   "desc": "Tao den va quan ly Light Mix, kich thuoc theo don vi Scene",
+   "zip": "https://dp-gate.ducphan.workers.dev/dl?product=dplight&file=dp_lighting-1.3.0.zip",
+   "released": true,
+   "buy": "https://t.me/ducphan",
+   "video": "",
+   "gated": true
+  },
+  {
+   "code": "dpcam",
+   "module": "dp_camera",
+   "name": "DP_Camera Setup & Batch Render",
+   "version": "1.3.0",
+   "free": false,
+   "price": 0,
+   "desc": "Tao, quan ly, dat thong so va Batch Render camera",
+   "zip": "https://dp-gate.ducphan.workers.dev/dl?product=dpcam&file=dp_camera-1.3.0.zip",
+   "released": true,
+   "buy": "https://t.me/ducphan",
+   "video": "",
+   "gated": true
+  },
+  {
+   "code": "dppost",
+   "module": "dp_postprocess",
+   "name": "DP-PostProcessing",
+   "version": "1.1.0",
+   "free": false,
+   "price": 0,
+   "desc": "Hau ky kieu Corona: Sharpen, Bloom, Glare, LUT, Vignette",
+   "zip": "https://dp-gate.ducphan.workers.dev/dl?product=dppost&file=dp_postprocess-1.1.0.zip",
+   "released": true,
+   "buy": "https://t.me/ducphan",
+   "video": "",
+   "gated": true
+  },
+  {
+   "code": "dpsusync",
+   "module": "dp_su_sync",
+   "name": "DP_SU to Blender Sync",
+   "version": "3.2.1",
+   "free": false,
+   "price": 0,
+   "desc": "Nhan dong bo tu SketchUp qua dinh dang JSON rieng",
+   "zip": "https://dp-gate.ducphan.workers.dev/dl?product=dpsusync&file=dp_su_sync-3.2.1.zip",
+   "released": true,
+   "buy": "https://t.me/ducphan",
+   "video": "",
+   "gated": true
+  }
+ ]
+}
