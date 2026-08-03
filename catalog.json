@@ -3,7 +3,7 @@
  "updated": "(dat luc commit)",
  "gate": "https://dp-gate.vyd-info.workers.dev",
  "hub": {
-  "version": "1.4.0",
+  "version": "1.5.0",
   "module": "dp_hub",
   "zip": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/dp_hub.zip"
  },
@@ -27,6 +27,7 @@
    "released": true,
    "buy": "https://t.me/ducphan",
    "video": "",
+   "icon": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/icon_dpmax.png",
    "gated": true
   },
   {
@@ -41,6 +42,7 @@
    "released": true,
    "buy": "https://t.me/ducphan",
    "video": "",
+   "icon": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/icon_dplight.png",
    "gated": true
   },
   {
@@ -55,6 +57,7 @@
    "released": true,
    "buy": "https://t.me/ducphan",
    "video": "",
+   "icon": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/icon_dpcam.png",
    "gated": true
   },
   {
@@ -69,6 +72,7 @@
    "released": false,
    "buy": "https://t.me/ducphan",
    "video": "",
+   "icon": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/icon_dppost.png",
    "gated": true
   },
   {
@@ -83,6 +87,7 @@
    "released": true,
    "buy": "https://t.me/ducphan",
    "video": "",
+   "icon": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/icon_dpsusync.png",
    "gated": true
   }
  ]
