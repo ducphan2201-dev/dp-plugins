@@ -1,6 +1,12 @@
 {
  "schema": 1,
  "updated": "(dat luc commit)",
+ "gate": "https://dp-gate.vyd-info.workers.dev",
+ "hub": {
+  "version": "1.3.0",
+  "module": "dp_hub",
+  "zip": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/dp_hub.zip"
+ },
  "payment": {
   "qr": "",
   "note": ""
