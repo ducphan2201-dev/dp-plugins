@@ -64,7 +64,7 @@
    "code": "dppost",
    "module": "dp_postprocess",
    "name": "DP-PostProcessing",
-   "version": "1.1.0",
+   "version": "2.1.1",
    "free": false,
    "price": 149000,
    "desc": "Tone Mapping cho ảnh Render, Xuất ảnh hàng loạt, đóng logo",
