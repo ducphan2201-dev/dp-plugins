@@ -3,7 +3,7 @@
  "updated": "(dat luc commit)",
  "gate": "https://dp-gate.vyd-info.workers.dev",
  "hub": {
-  "version": "1.5.0",
+  "version": "1.6.0",
   "module": "dp_hub",
   "zip": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/dp_hub.zip"
  },
@@ -68,8 +68,8 @@
    "free": false,
    "price": 149000,
    "desc": "Tone Mapping cho ảnh Render, Xuất ảnh hàng loạt, đóng logo",
-   "zip": "",
-   "released": false,
+   "zip": "https://dp-gate.vyd-info.workers.dev/dl?product=dppost&file=dp_postprocess-2.7.2.zip",
+   "released": true,
    "buy": "https://t.me/ducphan",
    "video": "",
    "icon": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/icon_dppost.png",
@@ -88,7 +88,30 @@
    "buy": "https://t.me/ducphan",
    "video": "",
    "icon": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/icon_dpsusync.png",
-   "gated": true
+   "gated": true,
+   "companion": {
+    "kind": "sketchup",
+    "label": "SketchUp extension (.rbz)",
+    "version": "3.3.0",
+    "file": "SU2Blender_Sync_SketchUp_v3.3.0.rbz",
+    "size": 522095,
+    "url": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/SU2Blender_Sync_SketchUp_v3.3.0.rbz"
+   }
+  },
+  {
+   "code": "dpoptimize",
+   "module": "dp_optimize",
+   "name": "DP-OptimizeRender",
+   "version": "0.2.0",
+   "free": true,
+   "price": 0,
+   "desc": "Chống denoise làm mờ vân vật liệu, tự dò và chỉnh scene Cycles",
+   "zip": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/dp_optimize-0.2.0.zip",
+   "released": true,
+   "buy": "https://t.me/ducphan",
+   "video": "",
+   "icon": "",
+   "gated": false
   }
  ]
 }
