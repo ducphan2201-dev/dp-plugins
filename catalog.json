@@ -80,11 +80,11 @@
    "code": "dpsusync",
    "module": "dp_su_sync",
    "name": "DP_SU to Blender Sync",
-   "version": "3.6.1",
+   "version": "3.7.0",
    "free": false,
    "price": 68000,
    "desc": "Sync On Demand Sketchup model -> Blender, tối ưu lưới",
-   "zip": "https://dp-gate.vyd-info.workers.dev/dl?product=dpsusync&file=dp_su_sync-3.6.1.zip",
+   "zip": "https://dp-gate.vyd-info.workers.dev/dl?product=dpsusync&file=dp_su_sync-3.7.0.zip",
    "released": true,
    "buy": "https://t.me/ducphan",
    "video": "https://www.youtube.com/watch?v=jrk3daBxIe0",
@@ -93,10 +93,10 @@
    "companion": {
     "kind": "sketchup",
     "label": "SketchUp extension (.rbz)",
-    "version": "3.6.1",
-    "file": "SU2Blender_Sync_SketchUp_v3.6.1.rbz",
-    "size": 524957,
-    "url": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/SU2Blender_Sync_SketchUp_v3.6.1.rbz"
+    "version": "3.7.0",
+    "file": "SU2Blender_Sync_SketchUp_v3.7.0.rbz",
+    "size": 527483,
+    "url": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/SU2Blender_Sync_SketchUp_v3.7.0.rbz"
    }
   },
   {
