@@ -17,6 +17,29 @@
  "note_released": "\"released\": false nghia la ban nay CHUA nam tren kho phat hanh - Hub boi xam khoi cai va khong bay nut Install/Update, chi con nut Buy. Truong do do so released.json quyet dinh, va so do chi duoc ghi boi `rollout.py --publish` SAU KHI doc lai file tren kho de doi chieu. \"version\" cung la ban DANG NAM TREN KHO, khong phai ban trong ma nguon tac gia.",
  "products": [
   {
+   "code": "dpcadsync",
+   "module": "dp_cadsyncblender",
+   "name": "DP_CadSyncBlender",
+   "version": "0.1.0",
+   "free": true,
+   "price": 0,
+   "desc": "Đưa nét 2D từ CAD sang Blender",
+   "zip": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/dp_cadsyncblender-0.1.0.zip",
+   "released": true,
+   "buy": "https://t.me/ducphan",
+   "video": "",
+   "icon": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/icon_dpcadsync.png",
+   "gated": false,
+   "companion": {
+    "kind": "cad",
+    "label": "CAD side (AutoLISP .lsp)",
+    "version": "0.1.0",
+    "file": "DP_CadSync_CAD_v0.1.0.lsp",
+    "size": 33368,
+    "url": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/DP_CadSync_CAD_v0.1.0.lsp"
+   }
+  },
+  {
    "code": "dpmax",
    "module": "max_importer_pro",
    "name": "DP_MaxImporter",
