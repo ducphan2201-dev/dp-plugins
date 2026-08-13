@@ -3,7 +3,7 @@
  "updated": "(dat luc commit)",
  "gate": "https://dp-gate.vyd-info.workers.dev",
  "hub": {
-  "version": "1.6.10",
+  "version": "1.6.11",
   "module": "dp_hub",
   "zip": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/dp_hub.zip"
  },
@@ -32,11 +32,11 @@
    "gated": false,
    "companion": {
     "kind": "cad",
-    "label": "CAD side (AutoLISP .lsp)",
+    "label": "CAD side (unzip, APPLOAD)",
     "version": "0.1.0",
-    "file": "DP_CadSync_CAD_v0.1.0.lsp",
-    "size": 33368,
-    "url": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/DP_CadSync_CAD_v0.1.0.lsp"
+    "file": "DP_CadSync_CAD_v0.1.0.zip",
+    "size": 11457,
+    "url": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/DP_CadSync_CAD_v0.1.0.zip"
    }
   },
   {
