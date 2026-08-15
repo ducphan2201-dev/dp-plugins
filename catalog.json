@@ -43,11 +43,11 @@
    "code": "dpmax",
    "module": "max_importer_pro",
    "name": "DP_MaxImporter",
-   "version": "3.47.0",
+   "version": "3.48.0",
    "free": false,
    "price": 689000,
    "desc": "Import file . max full vật liệu, Setup vật liệu kiểu 3dsmax",
-   "zip": "https://dp-gate.vyd-info.workers.dev/dl?product=dpmax&file=max_importer_pro-3.47.0.zip",
+   "zip": "https://dp-gate.vyd-info.workers.dev/dl?product=dpmax&file=max_importer_pro-3.48.0.zip",
    "released": true,
    "buy": "https://t.me/ducphan",
    "video": "https://www.youtube.com/watch?v=dU9-zXDyCM0&t=125s",
@@ -103,11 +103,11 @@
    "code": "dpsusync",
    "module": "dp_su_sync",
    "name": "DP_SU to Blender Sync",
-   "version": "3.7.1",
+   "version": "3.8.0",
    "free": false,
    "price": 68000,
    "desc": "Sync On Demand Sketchup model -> Blender, tối ưu lưới",
-   "zip": "https://dp-gate.vyd-info.workers.dev/dl?product=dpsusync&file=dp_su_sync-3.7.1.zip",
+   "zip": "https://dp-gate.vyd-info.workers.dev/dl?product=dpsusync&file=dp_su_sync-3.8.0.zip",
    "released": true,
    "buy": "https://t.me/ducphan",
    "video": "https://www.youtube.com/watch?v=jrk3daBxIe0",
@@ -116,10 +116,10 @@
    "companion": {
     "kind": "sketchup",
     "label": "SketchUp extension (.rbz)",
-    "version": "3.7.1",
-    "file": "SU2Blender_Sync_SketchUp_v3.7.1.rbz",
-    "size": 529704,
-    "url": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/SU2Blender_Sync_SketchUp_v3.7.1.rbz"
+    "version": "3.8.0",
+    "file": "SU2Blender_Sync_SketchUp_v3.8.0.rbz",
+    "size": 529825,
+    "url": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/SU2Blender_Sync_SketchUp_v3.8.0.rbz"
    }
   },
   {
