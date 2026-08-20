@@ -136,6 +136,36 @@
    "video": "",
    "icon": "",
    "gated": false
+  },
+  {
+   "code": "dptiles",
+   "module": "dp_tiles",
+   "name": "DP_Tiles",
+   "version": "0.1.0",
+   "free": false,
+   "price": 350000,
+   "desc": "Sinh sàn gỗ, sàn gạch, ốp tường bằng hình học thật",
+   "zip": "",
+   "released": false,
+   "buy": "https://t.me/ducphan",
+   "video": "",
+   "icon": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/icon_dptiles.png",
+   "gated": true
+  },
+  {
+   "code": "dpmatpro",
+   "module": "dp_matpro",
+   "name": "DP_MatPro",
+   "version": "0.1.0",
+   "free": false,
+   "price": 450000,
+   "desc": "setup Vật liệu procedural nhanh",
+   "zip": "",
+   "released": false,
+   "buy": "https://t.me/ducphan",
+   "video": "",
+   "icon": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/icon_dpmatpro.png",
+   "gated": true
   }
  ]
 }
