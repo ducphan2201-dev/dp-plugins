@@ -153,11 +153,12 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
   <div class="canh-dau">
     <div class="dau">Nhớ<br>trước hết</div>
     <div>
-      <p><b>File .zip thì phải bấm nút, không kéo thả được.</b> Từ Blender
-      4.2, cú thả một file <b>.zip</b> bị chính Blender chặn ở <b>tầng cửa
-      sổ</b> để đưa cho bộ cài extension — không vùng nào bên trong Blender
-      nhận được, kể cả ô dán đường dẫn của addon này. Kéo thả vẫn chạy tốt
-      với <b>.max</b>, <b>.rar</b>, <b>.7z</b>.</p>
+      <p><b>Kéo thả file .max thẳng vào Blender là nhập luôn</b> — không cần
+      mở bảng, không cần bấm nút nào. <b>.rar</b> và <b>.7z</b> cũng thế.</p>
+      <p><b>Trừ .zip.</b> Từ Blender 4.2, cú thả một file <b>.zip</b> bị chính
+      Blender chặn ở <b>tầng cửa sổ</b> để đưa cho bộ cài extension — không
+      vùng nào bên trong Blender nhận được, kể cả ô dán đường dẫn của addon
+      này. File <b>.zip</b> phải đi qua nút trong bảng.</p>
       <p><b>Và đừng để addon khác giữ cửa .max.</b> Blender chỉ cho <b>một</b>
       chủ mỗi tên lệnh nhập. Nếu addon "Import Autodesk MAX Format" của
       Blender — hoặc một bản DP_MaxImporter cũ — đang bật, bảng sẽ hiện một
@@ -198,15 +199,18 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
   <div class="doi">
     <div>
       <ol class="buoc">
+        <li><b>Kéo thả thẳng vào Blender</b> — đường nhanh nhất, và là đường
+        hay dùng nhất. Lôi file từ Explorer thả vào cửa sổ Blender là nhập
+        luôn: không mở bảng, không hộp thoại, không bấm nút nào. Nhận cả
+        <b>.max</b> trần lẫn <b>.rar</b> và <b>.7z</b> — chỉ <b>.zip</b> là
+        không, xem khung ở đầu trang.</li>
         <li><b>Nút <span class="nut">Import .max file(s)</span></b> — mở hộp
         thoại file. Chọn được <b>nhiều file một lượt</b>: mở thư mục thư
-        viện, quét chọn, bấm một lần. Đây cũng là đường nhập cả một thư
-        viện model.</li>
+        viện, quét chọn, bấm một lần. Đây là đường nhập cả một thư viện
+        model, thứ kéo thả không làm được.</li>
         <li><b>Nút <span class="nut">Import .zip / .rar / .7z</span></b> —
         addon tự giải nén rồi tìm file <b>.max</b> bên trong. Không phải giải
         nén tay trước.</li>
-        <li><b>Kéo thả</b> thẳng vào khung nhìn — với <b>.max</b>,
-        <b>.rar</b>, <b>.7z</b>. Không mở hộp thoại nào, chạy luôn.</li>
         <li><b>Dán đường dẫn</b> vào ô <i>"Or paste a path"</i>. Dán xong là
         nhập ngay, không cần bấm gì thêm. <b>Đuôi file quyết định cửa</b>,
         không phải bạn: <b>.max</b> trần đi một cửa, file nén đi cửa
@@ -250,17 +254,16 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
   <span class="nut">NO-SKIP</span> kèm số mục bị bỏ và tên từng mục. Khối đó
   <b>đứng lại cho đến khi được xử lý</b> — không tự tắt sau vài giây như
   thông báo nổi của Blender.</p>
-  <p>Chi tiết đầy đủ nằm ở phần <span class="nut">STRICT GUARD</span> trong
-  <b>logs/importer.log</b>, ngay trong thư mục addon.</p>
   <div class="hop">
     <p><b>Vì sao phải là một khối trên bảng?</b> Thông báo nổi của Blender tắt
-    sau vài giây, còn log thì không ai mở sau mỗi lần kéo thả. Suốt tám phiên
-    phát triển, cảnh báo đã ghi đủ trong log mà 13 khe map vẫn bị bỏ. Bảng là
-    chỗ vi phạm không đi đâu được.</p>
+    sau vài giây, mà lúc đó bạn còn đang nhìn model chứ chưa nhìn góc màn
+    hình. Bảng là chỗ một vi phạm không đi đâu được cho tới khi có người
+    xử lý.</p>
   </div>
   <p>Ảnh chụp trong sổ tay này không có khối đỏ đó, vì file mẫu dùng để chụp
-  nhập sạch — <b>0 mục bị bỏ</b>. Đó là trạng thái bình thường; thấy khối đỏ
-  là một chuyện đáng gửi cho tác giả.</p>
+  nhập sạch — <b>0 mục bị bỏ</b>. Đó là trạng thái bình thường. Thấy khối đỏ
+  thì <b>chụp lại cái bảng và gửi kèm file .max cho tác giả</b> — mấy dòng
+  trong khối đã đủ để tìm ra chỗ thiếu.</p>
 </section>
 
 <!-- ========================================================= vat lieu -->
@@ -460,8 +463,9 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
   <h3>Thả file .zip vào Blender mà nó đòi cài extension?</h3>
   <p>Đúng như dự đoán, và không sửa được từ phía addon: Blender chặn cú thả
   <b>.zip</b> ở tầng cửa sổ. Dùng nút
-  <span class="nut">Import .zip / .rar / .7z</span>. Riêng <b>.rar</b> và
-  <b>.7z</b> thì kéo thả vẫn chạy bình thường.</p>
+  <span class="nut">Import .zip / .rar / .7z</span>. <b>.zip</b> là đuôi file
+  duy nhất bị chặn: <b>.max</b>, <b>.rar</b> và <b>.7z</b> kéo thả vẫn chạy
+  bình thường.</p>
 
   <h3>Nhập xong model trắng bệch, không thấy texture đâu?</h3>
   <p>Thường là map nằm ở thư mục <b>trên</b> file <b>.max</b> chứ không phải
