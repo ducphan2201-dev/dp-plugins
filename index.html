@@ -1,0 +1,240 @@
+<title>Dây Chuyền DP Addon</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Chín addon Blender cho người dựng hình nội thất – kiến trúc: từ nét CAD tới ảnh đã đóng logo. Bảng giá đầy đủ.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+*{box-sizing:border-box}
+:root{
+  --nen:#0b0c0f; --mat:#14161b; --ke:#262b33; --ke-mo:#1c2027;
+  --chu:#eceae5; --mo:#98a0ab; --nhan:#e2a55a; --free:#7fbf8c;
+}
+:root[data-theme="light"]{
+  --nen:#f2f3f5; --mat:#ffffff; --ke:#d8dce2; --ke-mo:#e7eaee;
+  --chu:#171a1e; --mo:#5b636e; --nhan:#8f5710; --free:#2f6b3a;
+}
+@media (prefers-color-scheme:light){
+  :root:not([data-theme="dark"]){
+    --nen:#f2f3f5; --mat:#ffffff; --ke:#d8dce2; --ke-mo:#e7eaee;
+    --chu:#171a1e; --mo:#5b636e; --nhan:#8f5710; --free:#2f6b3a;
+  }
+}
+html{scroll-behavior:smooth}
+body{margin:0; background:var(--nen); color:var(--chu);
+  font-family:"Newsreader",Georgia,serif; font-size:15.5px; line-height:1.45;
+  -webkit-font-smoothing:antialiased}
+h1,h2,.nhan-lon,.c-ten b{font-family:"Bricolage Grotesque","Segoe UI",
+  system-ui,sans-serif; font-weight:700; letter-spacing:-.02em; margin:0;
+  text-wrap:balance}
+.mac,.ma,.gia,.gia-free,.dai,.rail small,.stt-nho,.ky,.nhan-lon,th,.c-bl,
+.c-khau,.c-kh,.c-lien,.chuyen .s,.keo,.chan h3{
+  font-family:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  font-variant-numeric:tabular-nums}
+.trong{max-width:1780px; margin:0 auto; padding:0 clamp(18px,2.6vw,42px)}
+
+/* hat phim: mot lop rat mo cho be mat do bi "sach nhu file PDF" */
+.hat{position:fixed; inset:0; z-index:9; pointer-events:none; opacity:.05;
+  background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABAAgMAAADXB5lNAAAADFBMVEX///+qqqpVVVUAAAABM1s0AAAES0lEQVR42gFABL/7AGP3vDs+zuS25/gQWrRHyYMDpCnq/zAUz1sMyACY4+KDdAI3LDw7Ri+67YYx5IMkCIzHA8sL7QzsxSC0/0ETRsBh1ycDw9BPPTpBCackox1M4dJ7IgMQtEzwGaHlJASL0MLAhv7cAgAC1tFd7/dLeb0pYiet0hIEuVQoVBeT0HKI137pEyweogAx4UDnNMSvlnYDsBhHdTtXAQ0Q2ZsCnNoxy088W526bMgAWwIXFrYAewPAurP62T9hvQEWFfRk3iyFzEhj6RELVf2eAGjRS/dOFPJJTIzPbVdV/sAC2lxaJ9rdnTK2FOboC1VpWgHP+a6E3qU4BDQs00f74zz2AGCyPEr42lrwmxzoish6vcECuF6A1osKGf1X4p4rzBioJwGUC67HUWULqRLoRxiKQwrhAv1V3uhGME35oLr3HnDL7AkAYDyY6/5v7/bOr/TuVHV1HAHNbig8rTkVlQaOcxzQtEICAUoQPANVOx2wGfow//KXsbICwkKnENqr4uc05yUQACEePQGRkjbnmWRiFjUwE16y6whYAijh6l8D8YidWlsUzZxH3PcAjLsuz2VjczwPIPKz/uNi2wBB//FjUK2AFXeSAh1S2kcKAi+dRiLaDNKcXAt9bPrDXPMD1KEci4XM5x6U4GfeYPnkLQFjA3xCByv3wdP4QaryEHAWA2kqKyAF0w7bMt3iE8xTWDwDrPcCGHqgFFwilNATzCLrOwL8L+2Znv5Eq3tI9DTW8Vx7ANMHoWnGPMIcBVBwGYLWY/QAUAdPsSgB5XbUmi9z3T+howCv+A9pbfYPjOrpxE4hDuktAR32s1tCEziyRd3I2j5bfJUEfjsIQN8Knjv4MQdDFGJfKATVAmfeSzxMlRrD+oQh7PbHBP2cAd3gx7dORmGiqQeLZuQAJ6oPCnyfHOhxjQj1El6ORgEHpPOqdA/3zORtqAdLnh1JAH5Yzz2klPYP4ILWbpEF0bgB6TRSHt7r8QpVBlW4nmKLggFeEFS4dezCSNzyHX8NEzymAJk0VnNo++lq2CQn/HgLdKYD+ewmcALq9wb+MKrDUEZsJAT1jCb/u1K+nS3HA0sQFVXGA//2tZUkGyXoTQeifzeQ/YsEec99tzwPiFv4rOjQAuVfjAHv32v5BzXvtyFM6iUGoZCaAyl0XVJtwlBZGDPz2u3kHgwBE8vz/UmK/jufyRkYbR8iuAC3GfuHStZKr/K6cN+rt+lyAND6pqnzH7TYJcgfaiMEOR0BPMiXqBolapkVqiSTikRrIQEwT4cugvy1pQl4IbnfDPEOA+8/Nbewcjj/9E+RB8o9hQIEphlXmtAj0gSWyWlCXAkrTAEgBqPz6tnk9gY0pFlE4OP5AIr4/O1C6T6A8iCw6y7vMrEA4z6nP/0O4uPfvVWG/+Av+AIBJ82jGb+1uxWi1gieWGNnAJvH/3sS1CMWy5XvluPHvdkrXv2Pnr6mGgAAAABJRU5ErkJggg==); background-size:64px 64px}
+@media (prefers-reduced-motion:no-preference){
+  .hat{animation:hat 1.2s steps(4) infinite}
+}
+@keyframes hat{0%{transform:translate(0,0)}25%{transform:translate(-7px,4px)}
+  50%{transform:translate(5px,-6px)}75%{transform:translate(-3px,-3px)}
+  100%{transform:translate(0,0)}}
+
+/* --------------------------------------------------------------- mo dau */
+.mo{position:relative; overflow:hidden;
+  padding:clamp(20px,2.4vh,32px) 0 clamp(8px,1.2vh,14px)}
+.mo::before{content:""; position:absolute; inset:0; pointer-events:none;
+  background:
+    repeating-linear-gradient(to right,currentColor 0 1px,transparent 1px 46px),
+    repeating-linear-gradient(to bottom,currentColor 0 1px,transparent 1px 46px);
+  opacity:.05;
+  -webkit-mask-image:radial-gradient(110% 85% at 74% 16%,#000,transparent 70%);
+          mask-image:radial-gradient(110% 85% at 74% 16%,#000,transparent 70%)}
+.mo::after{content:""; position:absolute; width:66vw; height:66vw;
+  right:-12vw; top:-30vw; border-radius:50%; pointer-events:none;
+  background:radial-gradient(circle,rgba(226,165,90,.26) 0%,
+    rgba(226,165,90,.08) 38%,transparent 70%)}
+@media (prefers-reduced-motion:no-preference){
+  .mo::after{animation:troi 16s ease-in-out infinite alternate}
+}
+@keyframes troi{from{transform:translate3d(0,0,0) scale(1)}
+  to{transform:translate3d(-4vw,3vw,0) scale(1.12)}}
+.mo .trong{position:relative}
+.mac{font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--nhan); display:flex; flex-wrap:wrap; gap:9px; margin-bottom:15px}
+.mac span::before{content:"/ "; opacity:.4}
+.mac span:first-child::before{content:none}
+h1{font-size:clamp(28px,2.9vw,48px); line-height:1.0; letter-spacing:-.035em;
+  max-width:17ch}
+h1 em{font-style:normal; color:var(--nhan)}
+.mo-phu{margin:11px 0 0; max-width:64ch; font-size:clamp(14.5px,1.1vw,16.5px);
+  color:var(--mo); font-style:italic}
+.rail{display:flex; flex-wrap:wrap; margin:15px 0 0; padding:0;
+  list-style:none; border:1px solid var(--ke); max-width:830px}
+.rail li{flex:1 1 165px; padding:7px 15px; border-right:1px solid var(--ke)}
+.rail li:last-child{border-right:none}
+.rail b{display:block; font-family:"Bricolage Grotesque",sans-serif;
+  font-weight:700; font-size:22px; line-height:1.05}
+.rail small{display:block; margin-top:4px; font-size:10.5px; color:var(--mo);
+  line-height:1.4}
+
+/* ------------------------------------------------------- dai 5 khau */
+.chuyen{display:flex; flex-wrap:wrap; gap:0; margin:0; padding:0;
+  list-style:none; border-top:1px solid var(--ke);
+  border-bottom:1px solid var(--ke)}
+.chuyen li{flex:1 1 190px; padding:7px 17px 6px; position:relative;
+  display:flex; flex-direction:column; gap:5px;
+  border-right:1px solid var(--ke-mo)}
+.chuyen li:last-child{border-right:none}
+.chuyen li::before{content:""; position:absolute; left:0; top:-1px; height:2px;
+  width:0; background:var(--nhan); transition:width .5s ease var(--tre,0ms)}
+.chuyen li.hien::before{width:100%}
+.chuyen .s{font-size:10.5px; letter-spacing:.17em; color:var(--nhan)}
+.chuyen .t{font-size:16px; font-family:"Bricolage Grotesque",sans-serif;
+  font-weight:700; letter-spacing:-.02em}
+.ics{display:flex; gap:5px; margin-top:2px}
+.ic{background-size:contain; background-repeat:no-repeat;
+  background-position:center; display:block}
+.ic-nho{width:26px; height:26px; border-radius:6px; opacity:.94;
+  transition:transform .25s ease}
+.chuyen li:hover .ic-nho{transform:translateY(-2px)}
+
+/* ----------------------------------------------------------- bang gia */
+.giay{padding:clamp(8px,1vh,12px) 0 30px}
+.giay-dau{display:flex; flex-wrap:wrap; align-items:baseline; gap:6px 26px;
+  margin-bottom:8px}
+.giay h2{font-size:clamp(22px,2.1vw,31px); line-height:1.05}
+.giay-mo{margin:0; color:var(--mo); font-size:14px; flex:1 1 380px;
+  max-width:78ch}
+.cuon{overflow-x:auto}
+table{width:100%; border-collapse:collapse; font-size:14px}
+th{font-size:10.5px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--nhan); text-align:left; padding:0 14px 7px 0;
+  border-bottom:2px solid var(--chu); white-space:nowrap;
+  position:sticky; top:0; background:var(--nen); z-index:2}
+th:last-child{text-align:right; padding-right:0}
+td{padding:6px 14px 6px 0; border-bottom:1px solid var(--ke-mo);
+  vertical-align:middle; color:var(--mo)}
+tbody tr{transition:background-color .2s ease}
+tbody tr:hover{background:var(--mat)}
+.c-ten{color:var(--chu); min-width:230px; display:flex; align-items:center;
+  gap:12px}
+.o-icon{flex:0 0 34px}
+.icon{width:34px; height:34px; border-radius:8px;
+  transition:transform .28s cubic-bezier(.2,.9,.3,1.4)}
+tbody tr:hover .icon{transform:scale(1.12) rotate(-3deg)}
+.c-ten b{font-size:15.5px; display:block; letter-spacing:-.01em;
+  line-height:1.2}
+.ma{display:block; font-size:10.5px; color:var(--mo); margin-top:2px}
+.c-khau,.c-bl,.c-kh{white-space:nowrap; font-size:12.5px}
+.c-mo{min-width:260px}
+.stt-nho{color:var(--nhan); font-size:11px}
+.c-lien{white-space:nowrap}
+.c-lien a{color:var(--chu); text-decoration:none; font-size:11px;
+  border-bottom:1px solid var(--nhan); margin-right:10px;
+  transition:color .2s ease}
+.c-lien a:hover,.c-lien a:focus-visible{color:var(--nhan)}
+.c-gia{text-align:right; padding-right:0; white-space:nowrap}
+.gia{font-size:19px; font-weight:500; color:var(--chu); line-height:1;
+  transition:color .2s ease}
+.gia .dg{font-size:12px; color:var(--mo)}
+.gia-free{color:var(--free); font-size:15px}
+tbody tr:hover .gia{color:var(--nhan)}
+.tong{display:flex; flex-wrap:wrap; align-items:baseline; gap:12px;
+  margin-top:16px; padding:12px 17px; border:1px solid var(--ke);
+  background:var(--mat)}
+.nhan-lon{font-size:23px; font-weight:500}
+.nhan-lon .dg{font-size:14px; color:var(--mo)}
+.tong p{margin:0; color:var(--mo); font-size:13.5px; flex:1 1 320px}
+
+.chan{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:28px;
+  margin-top:24px; padding-top:18px; border-top:2px solid var(--chu)}
+.chan h3{font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--nhan); margin-bottom:8px}
+.chan p{margin:0 0 7px; font-size:13.5px; line-height:1.45; color:var(--mo)}
+.chan b{color:var(--chu)}
+.chan a{color:var(--chu); text-decoration:none;
+  border-bottom:1px solid var(--nhan)}
+.dai{font-size:11px; word-break:break-all}
+.ky{margin-top:18px; padding-top:11px; border-top:1px solid var(--ke);
+  display:flex; flex-wrap:wrap; gap:9px 22px; font-size:10.5px;
+  color:var(--mo)}
+
+/* -------------------------------------------------------- hien dan ra */
+.hien-dan{opacity:0; transform:translateY(12px);
+  transition:opacity .5s ease var(--tre,0ms),
+             transform .5s cubic-bezier(.2,.7,.3,1) var(--tre,0ms)}
+.hien-dan.hien{opacity:1; transform:none}
+
+@media (max-width:1180px){.c-mo{display:none}}
+@media (max-width:860px){
+  .c-bl,.c-khau{display:none}
+  .chan{grid-template-columns:1fr; gap:22px}
+}
+@media (max-width:560px){
+  .c-kh{display:none}
+  .c-ten{min-width:150px}
+  .icon{width:34px; height:34px}
+  .o-icon{flex:0 0 34px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hien-dan{opacity:1; transform:none; transition:none}
+  .chuyen li::before{width:100%; transition:none}
+  .icon{transition:none}
+}
+
+.i-dpcadsync{background-image:url(data:image/png;base64,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)}
+.i-dpcam{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAABYCAMAAABGS8AGAAAAwFBMVEVgpNlbn8k2bJxcoMtSlbI2k6JRk710dLk/f6oVf3+tzOAzmcxSk71IibRfocsAf/9///8AfwAAAH//////AP9JiLJZmsNSkrwAAAD7/f1qps0/v79Fha5docxYmsPX5e89ga6RudO40eI/f79VqqplncKdwdkA//+pyNw6fapmm74/v/9Ulb2Brszj7fRAfqcAAP9/f3/I3OhEhbF/f/9GhrBUl8NPkbtHh7Nho85ip9NJirZ/v79Ul8NJh7FQmclLqjbOAAAAQHRSTlMWagqlGwjUA0sC/wVtrtMCAgICAQH+/v4A//4Ejv6O/////wQD//8B////BI7///wBAv/UAnDWTk1O1SgEUxESligjrwAABGRJREFUeNq12Wl7ojAQAGC8uttuu3cOsVWoIOp2KXhba/3//2pzoSQEiMDOh/r08O04mQRILPyfwtL+dGW9dwd/khgURG9sxYZw4HnXZud5QSkcWCzhfas1LI4XHq37o/WdvOU9KIZJsqd956udF09KwCcI4c3w+MHemguvAmy13uj7YUmgdJDvN60TDuI8+Du+3b8ZqFp7c7zFKz38jq2ObUP4dL3L6M6BEBr4CybpEraaS+nNliAZ+BPek3SfqrsIILgljAIPartCHsuwh1u1XSbvkrbjcBxYb6xHa7lU3pxE13HY+9Wpny9xAYAPv70LTAvRjEvkLS8GhQNaCNiMC9DNKQgEvOIJ13QFDOCadQaBg+iDJtxIvizlXhQw2MKW3Vi+VO7SKlt06EhLNJUvrcWLgCPrqyGcP+fSgZZWROEVrUTFz69ziXygKEl7X5AwgvIlxMAFiM5ri6yhrXwY2aO+FCO71OUNR1oCDwsyVlwigzIXwEfcJuyfItjvZ6LUpfCgNgzy4cH/gmtlDCrCCGpgoHrIGEbQF5HtigW90pe0Wx5s3436V8RoOjeD3f7V4ZrAdr9C2FLN9fCoChxqYLmPES/EdKIJ1xUvUkxCVgynDL7jnywz2I5z+Sr/Ys4yKYWf6Thn1mLguwuSWbhwfZDpNFq8Z2AGy70K0PRSzilSZ8Q1sOz60oCOfEWuCgM/VFpgrsnYsMbSnBX5Pk8mz8li3wQMpklp6Xsm/JtCGOTD6Xx9MWn5f3H+iiWuNgxYjhPhIuRMMotDRXhxWd3Z2ovY4mkGp+5XQKYUIWum83RA7C/C+jA8Vzi5XLhqkWvCoGGYleLuMtd4+11bCpSF2eCF6fUhNBi8sQwjHczby0nGznHV5bccRlqYTxDb4ePn8CvXPJPxLB9GWjiZ0mJKiAuMYwij83KmgVEorvKuOx3lLkK5MMqDk2KkYm4IvxAYofyM1YVecQthlAvz9SF9acpcTqvBQvenbDFaqLdTNBZGMMvNz1zlnRntN/Iyo/cAl5g5MzZjpqUw66dRcjfyNxX0oUm8SME+ilsGI9SvFNLH08LAreJKCQu4p2RcRZZdwB/HBril3KHzqpnHwpZdwB8gPXyEanMh3Yapn475JcBMcQF/5CXP0xCVPxVmbj6dpO2yvzzgmG8r3ECTh3rjWPYisREyhA2RNF7J2CU7LBZs0iWV8JLNpg1syiXwsh3xUpAd1Psm4fP2GNnQO6VSBjVj+UETTrYgj03Br2B32YIkctCBoIl8X8FD4EnbvN1NM+7yQ9rmJdlvYeZpqEqrfZY3pjEZSCo34I7Vzf+4tszcW91xxW4Da7Ckvp/JOqw5YBngQ6dq0iRb8NA+10E5Elrhn8ebKjRll7sf+FveIVYc4O79BlWwl+tewSEWP3brbodLduKlbsbmq4+7dvGxG1036DlU3N2u149GsV7vDrQC46D0aDPyvOjao81PkeFhbOyN27nnr+N0tMdefMUpbwPxD/Bf28x5dKZxAAAAAElFTkSuQmCC)}
+.i-dplight{background-image:url(data:image/png;base64,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)}
+.i-dpmatpro{background-image:url(data:image/png;base64,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)}
+.i-dpmax{background-image:url(data:image/png;base64,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)}
+.i-dpoptimize{background-image:url(data:image/png;base64,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)}
+.i-dppost{background-image:url(data:image/png;base64,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)}
+.i-dpsusync{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAABYCAMAAABGS8AGAAAAwFBMVEVes6FdtaFYrZs/kYMRdnY7i3hdsJ5Aj35xuHF//38AfwDh7ux///8AAH86iYlmzJk/k3///wD///9VVapUppRImYkAAAD8/f0/v79ot6ZXqphFl4ZdsJ60189VqqpdtKHS5+M9k4E/v38A//9/f39RpJOLwraDvLDJ4t1krJxSppSjzcQA/wBDloV5vblFloVSppRhtKJTqZdKm41Qq5hiuKU1mpfD3tg/f3+dysEzmWZDlYVTp5ZmmZlHmYlrrqFTdlcWAAAAQHRSTlNmIqNOAxPO+wMCAv8CAg0FQAEBA/7+AP8E/o6O/v8D////BAECTv/////W/wHVCHFvTisQFNUG/wT/BVGuBSv/KIRwDQAABDdJREFUeNrF2ely2yoUAGDHbdLetnctBxvHEMlarM1LnDSus77/WxWBZEsOAi10Lj8yE0/05fgABwEj/JvaSPmpz9Yv01btYcH8lrDHWNYxOsY8I+yt84AvbkejWau23Qa7b/yRtaeHGcZ3t+Mr0tRuztr8Zo5QMgvuxKONsO/hi9EP/jz/627tanuPPb8J/oa/3P7ooYqWBF/wH2p4jXdjQhCaz/vRzzu8VsEPmIfbnxVBc+Qd7ONbHu58PgBGKMD+OTzN3YEs5PKiDjM8KtwBsIyZVWHfW/P83gxmASX3xaiTMPtvLPOL0FD5+V92gvNEWHFzuUhGDnsiEXZckQyvgD9bDJjLW/xTwl52IQK2wuYh/4U9ATN8QazFm8u7PMsCzoeELZbDswLO/r5qD0MLePUicuznmTB5JExp5DgRTZexGodT47nwOcx4lTCoqTOpNOfwBno4H8ojXkNHWpjsJ+8aJdDIcnjDS9EIv+CZBo7pRNloLSFQh6/xI4enOjisZMCJeJZPvy+hwc3hqQE+hkt5n8lvQI6fpaB2W8CF4YT1arAs4qbQEy7c8P1YDisyQFdYuk6snCZOmQ3oDIdF7zfMMvlvCXSOONa5OS1lpJD1sHjO0VUNp0wzoA4wEfHE2nIkk+F2i5gqx0NdFr0QxfI99K0dTEyJOCXjOBHbwdQcMIJlpXa47YcbNa3HgNJyfjsda4VxIXILGdmCSwJknutDwwLMWz6RUhfswFXFXU723etxCxggRJZgMLX/ASaHAWwVvjl7OJqE0N9thEWlJf3dRnjZXIBgCByXCyVYhstaSKmZTQm4LWGgyncdJcwn3cRJUTs4rL5WmtIgvlzcDi5PPCKxNIEOdpfnFd40jvNySMrFvTleuZjGyhwv1BPkmGtHB0cNAethhKrvfapBJXtZOd60cLFSiuHc7CreKkwwglQ8GiGF7KJIvhS63SM+DelQLm4Vtlz3qdo1wUfZWZ6x0XHW94PLbEwmXykp97Mk/VpuFdzecDmcZdzRfh9VXqpIowtygjxoYN5xTdsxaHah3I5t55r3M3hT0DR2dXVTbiAZDnTHGvxHfKhveUM9C/Aktrx8k244fxB9dqD7KNrTA+9F11TpX8UmHWcvSYt1yHXlT9e8gqwecXEQMuu/vqn7Th6EfMc7qy7PBCsOm+4Sm+7qEmfl8djWJrwpj8f4gd59Yo2F1V2WnY4gA1vwJzGIT4em3rOdeD/BOGO1Y95qMoYlonbMW00GDGr/1A+mMa8aQXFaNyQP8EGMiLPDfykPivfk1q4rgmQYu/qAH1UXLFP8+jwk4vHl8Urh7EqI3+jwoHvSq6c/8UfNJdb9NunTgavNg+YSq7h2C2ZJt03Z6vrpUn/tdrwo3AWbzXWrttk8veYZWHjGq82Msa4Xr+xz1voydvGovYNdlO3jz9aXsZbaLyVmnlkzf4RSAAAAAElFTkSuQmCC)}
+.i-dptiles{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAABYCAMAAABGS8AGAAAAwFBMVEVvoFp9rGWJsWiBsGd+r2SCsml//39biToVfxVkkkdychn/AACBr2h/AAAzmTP/////f39qmE8AAAB1olv8/fx7p2GGsm1/vz/X5NC0zKdlk0s/vz91o1zm7uJgjkbG2Lt6p2FVqlW70K8A/wDP3sZ/f3+ErG1djkGbuohrmlFnlkx0pFl/v39nlUuqqlVekENpmWWpxZqgvo90pFlZjDxmmTP//wDh6tt/fz9qmk9yoliEs2lrm050pFhhjkZzpFn24iX+AAAAQHRSTlMXXB1Z8J4CDQKjAwHbAgUBAv4A/v/+/gT//44Ejv/9/44D/wH/Av7+/0zU1QRwA/8H//9U/wUB/wQob9QSrksy3cjqeQAAA7BJREFUeNrVmYdy4jAQhk3JpVyVhI2TEC6OMWBTAqGFkuP93+pWkgEX2Ui2uPIPwzC2+eaf9Uqa3TXwhWQIr3rj4aQppUVz7EmCXWes6s5x3LPg5RC+flRrlcpzUi2RNpvZnloeLvPBYHZSu6pb+arXzaMIIYPWbAe2c8DeEldrW/inGRch9P8iIfYB9sbArpcF/oS/UqwpEskRouzB7AYAQvAQG1cZ2FwuQwP7Y42bIvAEV7bFsJRL0QMfL9JgD1ey7JpSXGrax14S3ARut4xfjvbxexw8zuaa8lxGdqJgb1ndlvfL4myEWcfBzvcrS4NfSv5wnRN4jGuWDr+MPOPBoGDXrX6xtPil4MBw3RA8LGoYiURGLOcManiytQpwkVgkuMYuA49x1dLml5L3NMoMLEyJglgAP4Rgt1rXCw4mLMaeMBKFsVR7gBo5SSy3Fwss03VtQLJVrCQIlRIkXBPAE/wcB5Pu9OVeRVMz9fYWAG4mwMRqKKubBDdFYFsdbEuASbdRQOZfB9+TVM716fU+SiYfmkqByQGMUgnL3qmVTq43RbCZASZFwIScByPt4H7oOLmOz8c4JJj0wWnaWYbjeV8JvPqZEls3dsb1JPgxBJPIFmbqyOOLg6N7rl7HJAm2V7Ztr+ivJ1ugp9MdNTBbeajLVzHKSBG2Wfb6BcAWB5Pc3HvLBrf+OLhbDIz+cXC/ANjS75hvQpnp1mN3unPxJpQHDlcF248E66PDd6QO/blSApda0v8zuJ6OcSce084xrCmtlMDpo+mVJ8KrxNF0AkcPTnTMY7kzDymDJQ/T3mXBRB6MlMDoUo6lwY2nlBp51+XBijoPhhCULhUiYBRpoaEixU0vBr5l4EnEMTsKkXn/kiNagL0kyrFe0vGCFZAbM94/yysOX7l6J83n83bskTYaQS/LgOp0xvuTJevRCJiXvFBPE51c0JoV6dB8HBCkj9tGwYK3bhzcIkif3zY6NEIcvNcZhzZEIuywYGOg0/Cx2QSR3mjLiDZPtkNDT5tl4Aa7Y0OPp7Iuw/6pBQnk5QfRxL397ETbvFqC0eaBiLZ5wb1PynNhL/oVb0xjeJFlydQvcG/SzX+/1DIJue/pccUC+yXiTOMQ/MLfxAOWddHcYHZvDfGAhY6EbmaDIvGg2MDH2MscYrl4txkobs3s+AhGu5whFks7bPitACm1YIMH/zp/7HYYFHprfzR6kNJo5K/v6AtyJUabziVGm2GwHZiyHvWYo7t3x1OY8mrQb7jyX+tl6m6pAAAAAElFTkSuQmCC)}</style>
+<div class="hat" aria-hidden="true"></div>
+<header class="mo"><div class="trong">
+<div class="mac hien-dan"><span>DP Addon Workflow</span><span>Blender</span><span>Bảng giá 2026</span></div>
+<h1 class="hien-dan" style="--tre:70ms">Từ nét CAD tới <em>tấm ảnh cuối</em>.</h1>
+<p class="mo-phu hien-dan" style="--tre:150ms">Chín addon cho người dựng hình nội thất – kiến trúc trong Blender, xếp đúng thứ tự một bản vẽ đi qua. Cần khâu nào lấy khâu đó.</p>
+<ul class="rail hien-dan" style="--tre:230ms"><li><b>9</b><small>addon đang phát hành</small></li><li><b>2</b><small>trong đó miễn phí</small></li><li><b>5 ngày</b><small>dùng thử trước khi trả tiền</small></li><li><b>0đ</b><small>phí cập nhật về sau</small></li></ul>
+</div></header>
+<nav class="trong" aria-label="Năm khâu"><ol class="chuyen"><li class="hien-dan" style="--tre:0ms"><span class="s">01</span><span class="t">Đưa model vào</span><span class="ics"><span class="ic ic-nho i-dpcadsync" aria-hidden="true"></span><span class="ic ic-nho i-dpsusync" aria-hidden="true"></span><span class="ic ic-nho i-dpmax" aria-hidden="true"></span></span></li><li class="hien-dan" style="--tre:70ms"><span class="s">02</span><span class="t">Vật liệu</span><span class="ics"><span class="ic ic-nho i-dpmatpro" aria-hidden="true"></span><span class="ic ic-nho i-dptiles" aria-hidden="true"></span></span></li><li class="hien-dan" style="--tre:140ms"><span class="s">03</span><span class="t">Ánh sáng</span><span class="ics"><span class="ic ic-nho i-dplight" aria-hidden="true"></span></span></li><li class="hien-dan" style="--tre:210ms"><span class="s">04</span><span class="t">Camera &amp; render</span><span class="ics"><span class="ic ic-nho i-dpcam" aria-hidden="true"></span><span class="ic ic-nho i-dpoptimize" aria-hidden="true"></span></span></li><li class="hien-dan" style="--tre:280ms"><span class="s">05</span><span class="t">Hậu kỳ</span><span class="ics"><span class="ic ic-nho i-dppost" aria-hidden="true"></span></span></li></ol></nav>
+<section class="giay"><div class="trong">
+<div class="giay-dau"><h2 class="hien-dan">Bảng giá đầy đủ</h2><p class="giay-mo hien-dan" style="--tre:60ms">Mua lẻ từng cái. Một mã kích hoạt mở tất cả addon đã mua trên máy đó, và bản cập nhật về sau không thu thêm phí.</p></div>
+<div class="cuon"><table>
+<thead><tr><th>Addon</th><th>Khâu</th><th>Làm gì</th><th>Yêu cầu</th><th>Kích hoạt</th><th>Hướng dẫn</th><th>Giá</th></tr></thead>
+<tbody><tr class="hien-dan" style="--tre:28ms"><td class="c-ten"><span class="o-icon"><span class="ic icon i-dpcadsync" role="img" aria-label="Biểu tượng"></span></span><span class="ten"><b>DP_CadSyncBlender</b><span class="ma">dpcadsync &middot; v0.1.0</span></span></td><td class="c-khau"><span class="stt-nho">01</span> Đưa model vào</td><td class="c-mo">Đưa nét 2D từ CAD sang Blender</td><td class="c-bl">Blender 3.0+</td><td class="c-kh">—</td><td class="c-lien"><a href="https://ducphan2201-dev.github.io/dp-plugins/huongdan/cadsync/">Sổ tay&nbsp;↗</a><a href="https://youtu.be/jjl5njiEOgE">Video&nbsp;↗</a></td><td class="c-gia"><span class="gia-free">Miễn phí</span></td></tr><tr class="hien-dan" style="--tre:56ms"><td class="c-ten"><span class="o-icon"><span class="ic icon i-dpsusync" role="img" aria-label="Biểu tượng"></span></span><span class="ten"><b>DP_SU to Blender Sync</b><span class="ma">dpsusync &middot; v3.8.0</span></span></td><td class="c-khau"><span class="stt-nho">01</span> Đưa model vào</td><td class="c-mo">Sync On Demand Sketchup model -&gt; Blender, tối ưu lưới</td><td class="c-bl">Blender 3.0+</td><td class="c-kh">cần mã</td><td class="c-lien"><a href="https://ducphan2201-dev.github.io/dp-plugins/huongdan/susync/">Sổ tay&nbsp;↗</a><a href="https://www.youtube.com/watch?v=jrk3daBxIe0">Video&nbsp;↗</a></td><td class="c-gia"><span class="gia">68.000<span class="dg">đ</span></span></td></tr><tr class="hien-dan" style="--tre:84ms"><td class="c-ten"><span class="o-icon"><span class="ic icon i-dpmax" role="img" aria-label="Biểu tượng"></span></span><span class="ten"><b>DP_MaxImporter</b><span class="ma">dpmax &middot; v3.49.0</span></span></td><td class="c-khau"><span class="stt-nho">01</span> Đưa model vào</td><td class="c-mo">Import file . max full vật liệu, Setup vật liệu kiểu 3dsmax</td><td class="c-bl">Blender 5.2+</td><td class="c-kh">cần mã</td><td class="c-lien"><a href="https://ducphan2201-dev.github.io/dp-plugins/huongdan/maximporter/">Sổ tay&nbsp;↗</a><a href="https://www.youtube.com/watch?v=dU9-zXDyCM0&amp;t=125s">Video&nbsp;↗</a></td><td class="c-gia"><span class="gia">689.000<span class="dg">đ</span></span></td></tr><tr class="hien-dan" style="--tre:112ms"><td class="c-ten"><span class="o-icon"><span class="ic icon i-dpmatpro" role="img" aria-label="Biểu tượng"></span></span><span class="ten"><b>DP_MatPro</b><span class="ma">dpmatpro &middot; v0.2.0</span></span></td><td class="c-khau"><span class="stt-nho">02</span> Vật liệu</td><td class="c-mo">setup Vật liệu procedural nhanh</td><td class="c-bl">Blender 4.2+</td><td class="c-kh">cần mã</td><td class="c-lien"><a href="https://ducphan2201-dev.github.io/dp-plugins/huongdan/matpro/">Sổ tay&nbsp;↗</a></td><td class="c-gia"><span class="gia">450.000<span class="dg">đ</span></span></td></tr><tr class="hien-dan" style="--tre:140ms"><td class="c-ten"><span class="o-icon"><span class="ic icon i-dptiles" role="img" aria-label="Biểu tượng"></span></span><span class="ten"><b>DP_Tiles</b><span class="ma">dptiles &middot; v0.2.0</span></span></td><td class="c-khau"><span class="stt-nho">02</span> Vật liệu</td><td class="c-mo">Sinh sàn gỗ, sàn gạch, ốp tường bằng hình học thật</td><td class="c-bl">Blender 4.2+</td><td class="c-kh">cần mã</td><td class="c-lien"><a href="https://ducphan2201-dev.github.io/dp-plugins/huongdan/tiles/">Sổ tay&nbsp;↗</a></td><td class="c-gia"><span class="gia">350.000<span class="dg">đ</span></span></td></tr><tr class="hien-dan" style="--tre:168ms"><td class="c-ten"><span class="o-icon"><span class="ic icon i-dplight" role="img" aria-label="Biểu tượng"></span></span><span class="ten"><b>DP_Lighting Setup</b><span class="ma">dplight &middot; v1.6.0</span></span></td><td class="c-khau"><span class="stt-nho">03</span> Ánh sáng</td><td class="c-mo">Setup ánh sáng, tạo đèn, quản lý lightmix</td><td class="c-bl">Blender 3.0+</td><td class="c-kh">cần mã</td><td class="c-lien"><a href="https://ducphan2201-dev.github.io/dp-plugins/huongdan/lighting/">Sổ tay&nbsp;↗</a></td><td class="c-gia"><span class="gia">199.000<span class="dg">đ</span></span></td></tr><tr class="hien-dan" style="--tre:196ms"><td class="c-ten"><span class="o-icon"><span class="ic icon i-dpcam" role="img" aria-label="Biểu tượng"></span></span><span class="ten"><b>DP_Camera Setup &amp; Batch Render</b><span class="ma">dpcam &middot; v1.6.0</span></span></td><td class="c-khau"><span class="stt-nho">04</span> Camera &amp; render</td><td class="c-mo">Tạo &amp; quản lý Camera,  Batch Render</td><td class="c-bl">Blender 2.80+</td><td class="c-kh">cần mã</td><td class="c-lien"><a href="https://ducphan2201-dev.github.io/dp-plugins/huongdan/camera/">Sổ tay&nbsp;↗</a></td><td class="c-gia"><span class="gia">199.000<span class="dg">đ</span></span></td></tr><tr class="hien-dan" style="--tre:224ms"><td class="c-ten"><span class="o-icon"><span class="ic icon i-dpoptimize" role="img" aria-label="Biểu tượng"></span></span><span class="ten"><b>DP-OptimizeRender</b><span class="ma">dpoptimize &middot; v0.2.0</span></span></td><td class="c-khau"><span class="stt-nho">04</span> Camera &amp; render</td><td class="c-mo">Chống denoise làm mờ vân vật liệu, tự dò và chỉnh scene</td><td class="c-bl">Blender 5.2+</td><td class="c-kh">—</td><td class="c-lien"><a href="https://ducphan2201-dev.github.io/dp-plugins/huongdan/optimize/">Sổ tay&nbsp;↗</a></td><td class="c-gia"><span class="gia-free">Miễn phí</span></td></tr><tr class="hien-dan" style="--tre:252ms"><td class="c-ten"><span class="o-icon"><span class="ic icon i-dppost" role="img" aria-label="Biểu tượng"></span></span><span class="ten"><b>DP-PostProcessing</b><span class="ma">dppost &middot; v2.13.0</span></span></td><td class="c-khau"><span class="stt-nho">05</span> Hậu kỳ</td><td class="c-mo">Tone Mapping cho ảnh Render, Xuất ảnh hàng loạt, đóng logo</td><td class="c-bl">Blender 5.2+</td><td class="c-kh">cần mã</td><td class="c-lien"><a href="https://ducphan2201-dev.github.io/dp-plugins/huongdan/postprocess/">Sổ tay&nbsp;↗</a></td><td class="c-gia"><span class="gia">149.000<span class="dg">đ</span></span></td></tr></tbody>
+</table></div>
+<div class="tong hien-dan"><span class="nhan-lon">2.104.000<span class="dg">đ</span></span><p>là tổng cộng 7 addon có phí, nếu mua hết. <b>Không phải giá gói</b> — cần cái nào lấy cái đó.</p></div>
+<footer class="chan">
+<div><h3>Cài thế nào</h3><p>Cài bảng <b>DP_Hub</b> (v1.6.15) vào Blender một lần. Mọi addon ở đây — kể cả bản cập nhật về sau — đều cài và nâng cấp ngay trong bảng đó.</p></div>
+<div><h3>Mua &amp; hỗ trợ</h3><p>Nhắn trong nhóm Zalo của tác giả — đây là <b>đường liên lạc duy nhất</b>:</p><p class="dai"><a href="https://zalo.me/g/gdfx7a7cttg9wafeqx7g">zalo.me/g/gdfx7a7cttg9wafeqx7g</a></p><p>Mã buộc theo máy; đổi máy hay cài lại máy được hỗ trợ miễn phí.</p></div>
+<div><h3>Đọc trước khi mua</h3><p>Cả chín addon đều có sổ tay hướng dẫn kèm ảnh chụp thật:</p><p class="dai"><a href="https://ducphan2201-dev.github.io/dp-plugins/huongdan/">ducphan2201-dev.github.io/dp-plugins/huongdan/</a></p></div>
+</footer>
+<div class="ky"><span>Ducphan &middot; 2026</span><span>Giá tính bằng VNĐ</span><span>Dùng thử 5 ngày trước khi trả tiền</span></div>
+</div></section>
+<script>
+(function(){
+  var it=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var ds=[].slice.call(document.querySelectorAll('.hien-dan'));
+  function hien(e){e.classList.add('hien');}
+  if(it||!('IntersectionObserver' in window)){ds.forEach(hien); return;}
+  var ob=new IntersectionObserver(function(mp){
+    mp.forEach(function(m){
+      if(m.isIntersecting){hien(m.target); ob.unobserve(m.target);}
+    });
+  },{rootMargin:'0px 0px -6% 0px',threshold:.06});
+  ds.forEach(function(e){ob.observe(e);});
+  // Phan dau trang hien NGAY, khong doi cuon: doi thi nguoi mo trang ra thay
+  // mot khoang trong roi chu moi noi len — doc len y het trang loi.
+  setTimeout(function(){
+    [].slice.call(document.querySelectorAll('.mo .hien-dan,.chuyen .hien-dan'))
+      .forEach(hien);
+  },40);
+})();
+</script>
