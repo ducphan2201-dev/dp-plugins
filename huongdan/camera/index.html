@@ -140,7 +140,7 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
 <header>
   <h1>Sổ tay <span>DP_Camera</span></h1>
   <p class="dat">Dựng camera từ góc nhìn đang có, quản lý cả chục camera trong
-  một bảng, chỉnh phối cảnh hai điểm — một điểm bằng một cú bấm, rồi render
+  một bảng, nắn phối cảnh hai điểm hoặc một điểm bằng một cú bấm, rồi render
   hàng loạt và đi ngủ.</p>
   <div class="so-lieu">
     <div><b>1</b><span>cú bấm ra một camera</span></div>
@@ -150,35 +150,35 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
   </div>
 
   <div class="canh-dau">
-    <div class="dau">Nhớ<br>trước hết</div>
+    <div class="dau">Khai đúng<br>tỉ lệ</div>
     <div>
-      <p><b>Bản vẽ của bạn đang ở tỉ lệ nào? Nhớ lấy con số đó — nó là thứ
-      duy nhất phải khai đúng trước khi bấm nút đầu tiên.</b></p>
+      <p><b>Bản vẽ của bạn đang ở tỉ lệ nào?</b> Đó là con số duy nhất phải
+      khai đúng trước khi bấm nút đầu tiên.</p>
       <p>Ô <span class="nut">Drawing Scale</span> trên cùng bảng nói cho addon
       biết <b>một Blender unit trong file của bạn dài bao nhiêu ngoài đời</b>.
-      File Blender mới mở là <b>1 unit = 1 m</b>; bản vẽ nhập từ CAD hay
+      File Blender mới mở là <b>1 unit = 1 m</b>, bản vẽ nhập từ CAD hay
       SketchUp thường là <b>1 unit = 1 mm</b>. Ba lựa chọn có sẵn là
       <span class="nut">1 unit = 1 mm (CAD)</span>,
       <span class="nut">1 unit = 1 cm</span> và
       <span class="nut">1 unit = 1 m</span>.</p>
-      <p>Khai sai thì lệch <b>một nghìn lần</b>, và nó chỉ hiện ra ở đúng ba
-      chỗ: <b>Clip Start / Clip End</b>, <b>Ortho Scale</b> và <b>Focus
-      Distance</b> — những thứ đo bằng chiều dài. Focal Length là milimet
+      <p>Khai sai thì lệch <b>một nghìn lần</b>, và chỗ lộ ra chỉ có ba:
+      <b>Clip Start / Clip End</b>, <b>Ortho Scale</b> và <b>Focus
+      Distance</b>, tức những thứ đo bằng chiều dài. Focal Length là milimet
       quang học thật, Shift là hệ số, độ phân giải là pixel, nên ba nhóm đó
       không bao giờ bị quy đổi.</p>
-      <p><b>Hậu quả thấy được:</b> một preset lưu ở file CAD đem sang file
-      mét sẽ cho camera cắt mất cảnh (clip sai) hoặc lấy nét vào hư không.
-      Khai đúng ô này một lần là preset dùng chung được giữa mọi bản vẽ, bất
-      kể chúng vẽ theo thước nào.</p>
+      <p><b>Hậu quả thấy được:</b> một preset lưu ở file CAD đem sang file mét
+      sẽ cho camera cắt mất cảnh (clip sai) hoặc lấy nét vào hư không. Khai
+      đúng ô này một lần là preset dùng chung được giữa mọi bản vẽ, bất kể
+      chúng vẽ theo thước nào.</p>
       <p>⚠ Addon <b>không đọc và không ghi</b> ô Unit Scale trong Scene
-      Properties. Tỉ lệ bản vẽ chỉ khai ở đúng một chỗ: ô này.</p>
+      Properties. Tỉ lệ bản vẽ chỉ khai ở đúng một chỗ là ô này.</p>
     </div>
   </div>
 </header>
 
 <section>
   <p class="nhan-nho">Bắt đầu</p>
-  <h2>Camera đầu tiên, trong ba mươi giây</h2>
+  <h2>Camera đầu tiên, bốn bước</h2>
   <div class="doi">
     <div>
       <ol class="buoc">
@@ -187,8 +187,8 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
             nhìn.</li>
         <li>Đặt đúng <span class="nut">Drawing Scale</span> ở ô trên cùng
             (xem khung vàng ở trên).</li>
-        <li>Xoay khung nhìn tới đúng góc bạn muốn chụp — <b>nhìn thấy sao thì
-            camera ra vậy</b>.</li>
+        <li>Xoay khung nhìn tới đúng góc bạn muốn chụp. <b>Nhìn thấy sao thì
+            camera ra vậy.</b></li>
         <li>Bấm <span class="nut">Create Camera from View</span>. Xong: camera
             mới nằm trong collection <span class="nut">Target Collection</span>,
             và khung nhìn nhảy luôn vào chế độ camera.</li>
@@ -199,28 +199,28 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
         <p><b>Hai nút, hai việc khác nhau.</b>
         <span class="nut">Create Camera from View</span> <b>đẻ ra một camera
         mới</b>. <span class="nut">Align Camera to View</span> thì không tạo
-        gì cả — nó <b>bê camera đang chọn</b> về đúng góc nhìn hiện tại. Dùng
+        gì cả, nó <b>bê camera đang chọn</b> về đúng góc nhìn hiện tại. Dùng
         cái thứ hai khi đã ưng camera rồi, chỉ muốn nắn lại góc.</p>
         <p>⚠ <span class="nut">Align Camera to View</span> đòi bạn <b>ra khỏi
-        chế độ camera trước</b> — đang nhìn bằng chính camera đó thì "góc nhìn
+        chế độ camera trước</b>. Đang nhìn bằng chính camera đó thì "góc nhìn
         hiện tại" là chính nó, nắn vào đâu nữa. Addon nói thẳng câu này ra khi
         bạn bấm.</p>
       </div>
       <h3>Hai ô tích ngay dưới</h3>
       <ul>
-        <li><span class="nut">New Camera: match viewport clip range</span> —
+        <li><span class="nut">New Camera: match viewport clip range</span>
             <b>bật sẵn, và nên để nguyên</b>. Camera mới lấy Clip Start / Clip
             End theo đúng khung nhìn của bản vẽ, thay cho mặc định 0,1 – 1000
             của Blender. Trên bản vẽ CAD (1 unit = 1 mm) thì mặc định đó chỉ
             nhìn được <b>1 mét</b> rồi cắt sạch phần còn lại.</li>
-        <li><span class="nut">Camera to View (Move with view)</span> — khoá
+        <li><span class="nut">Camera to View (Move with view)</span> khoá
             camera vào khung nhìn: xoay, kéo, zoom là camera đi theo. Đây là ô
             của chính Blender, addon chỉ bày nó ra cho gần tay.</li>
       </ul>
     </div>
     <figure class="anh">
       <img src="data:image/png;base64,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" alt="Khối tạo camera của bảng DP_Camera">
-      <figcaption>Khối trên cùng — tỉ lệ bản vẽ, collection đích, và hai cái
+      <figcaption>Khối trên cùng: tỉ lệ bản vẽ, collection đích, và hai cái
       nút bạn dùng nhiều nhất.</figcaption>
     </figure>
   </div>
@@ -239,7 +239,7 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
   <div class="doi">
     <div>
       <p>Khối <span class="nut">Cameras in Scene:</span> liệt kê <b>mọi camera
-      trong Scene</b>, không phải chỉ những cái addon dựng ra. Mỗi dòng có bốn
+      trong Scene</b>, không riêng những cái addon dựng ra. Mỗi dòng có mấy
       thứ bấm được, từ trái sang phải:</p>
       <div class="cuon">
       <table>
@@ -264,9 +264,9 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
       <span class="nut">Rename</span>. Chúng được đánh số theo thứ tự tên cũ:
       <i>Cam_01</i>, <i>Cam_02</i>, <i>Cam_03</i>…</p>
       <div class="hop">
-        <p><b>Tên camera chính là tên file ảnh render ra.</b> Đó là lý do nên
-        đổi tên trước khi render hàng loạt chứ không phải sau — đổi sau thì
-        bạn còn cả một thư mục ảnh tên <i>Camera.003</i> phải ngồi đối chiếu.</p>
+        <p><b>Tên camera chính là tên file ảnh render ra.</b> Vì vậy nên đổi
+        tên trước khi render hàng loạt chứ đừng đổi sau. Đổi sau thì bạn còn
+        cả một thư mục ảnh tên <i>Camera.003</i> phải ngồi đối chiếu.</p>
       </div>
       <h3>Chép thông số sang những cái đã tick</h3>
       <p><span class="nut">Copy Settings to Checked</span> lấy toàn bộ bộ số
@@ -274,7 +274,7 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
       tick: ống kính, tỉ lệ khung hình, độ phân giải, clip, DOF.</p>
       <p>Ô <span class="nut">Shift</span> ngay cạnh quyết định có chép cả
       <b>Shift X / Shift Y</b> hay không. <b>Mặc định là không</b>, và đó là
-      cố ý: Shift là phần nắn phối cảnh <b>riêng của từng góc chụp</b>, chép
+      chủ ý: Shift là phần nắn phối cảnh <b>riêng của từng góc chụp</b>, chép
       chung sang camera khác là lệch khung ngay.</p>
     </div>
     <figure class="anh">
@@ -290,24 +290,24 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
   <h2>Lưu một bộ số, dùng lại ở mọi bản vẽ</h2>
   <div class="doi">
     <div>
-      <p>Chỉnh xong một camera vừa ý — 50 mm, 16:9, DOF f/2.8 — thì gõ tên vào
-      ô rồi bấm <span class="nut">Save Preset</span>. Lần sau chọn tên đó
+      <p>Chỉnh xong một camera vừa ý, ví dụ 50 mm, 16:9, DOF f/2.8, thì gõ tên
+      vào ô rồi bấm <span class="nut">Save Preset</span>. Lần sau chọn tên đó
       trong danh sách và bấm dấu tích là cả bộ số nhảy vào camera đang chọn.
       Dấu <b>X</b> bên cạnh xoá preset khỏi danh sách.</p>
       <div class="hop">
         <p><b>Preset sống ngoài file .blend.</b> Nó nằm trong thư mục cấu hình
-        của Blender trên máy bạn, nên mở bản vẽ nào cũng thấy — kể cả bản vẽ
+        của Blender trên máy bạn, nên mở bản vẽ nào cũng thấy, kể cả bản vẽ
         của khách gửi tới. Đổi máy thì phải lưu lại.</p>
       </div>
       <p><b>Và preset đi qua được các bản vẽ khác tỉ lệ.</b> Lúc lưu, những
       con số đo bằng chiều dài (Clip Start, Clip End, Ortho Scale, Focus
       Distance) được quy về <b>mét thật</b> theo ô
-      <span class="nut">Drawing Scale</span>; lúc áp thì quy ngược lại theo tỉ
+      <span class="nut">Drawing Scale</span>. Lúc áp thì quy ngược lại theo tỉ
       lệ của bản vẽ đích. Preset lưu ở file CAD milimet dùng lại đúng ở file
       dựng theo mét.</p>
-      <p>⚠ Đó cũng chính là chỗ ô <span class="nut">Drawing Scale</span> phải
-      đúng ở <b>cả hai đầu</b>. Khai sai một đầu là preset mang theo một con số
-      lệch nghìn lần mà không có gì kêu.</p>
+      <p>⚠ Đó cũng là chỗ ô <span class="nut">Drawing Scale</span> phải đúng ở
+      <b>cả hai đầu</b>. Khai sai một đầu là preset mang theo một con số lệch
+      nghìn lần mà không có gì kêu.</p>
       <p>Ô <span class="nut">Shift</span> ở khối danh sách cũng chi phối luôn
       phép áp preset: tắt thì preset không đụng vào Shift X / Shift Y của
       camera.</p>
@@ -327,10 +327,10 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
     <div>
       <p>Đây là chỗ DP_Camera khác Blender gốc: <b>mỗi camera giữ độ phân giải
       của riêng nó</b>. Chuyển sang camera nào thì Scene lấy đúng số của camera
-      đó. Không phải nhớ đổi tay giữa một cái đứng cho Instagram và một cái
-      ngang cho hồ sơ.</p>
+      đó. Bạn không phải nhớ đổi tay giữa một cái đứng cho Instagram và một
+      cái ngang cho hồ sơ.</p>
       <p><span class="nut">Aspect Ratio</span> có mười lựa chọn dựng sẵn, chọn
-      là hai ô X / Y điền hộ:</p>
+      xong là hai ô X / Y điền hộ:</p>
       <div class="cuon">
       <table>
         <thead><tr><th>Ngang</th><th>Vuông</th><th>Đứng</th></tr></thead>
@@ -343,12 +343,12 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
         </tbody>
       </table>
       </div>
-      <p>Muốn con số khác thì gõ đè lên X hoặc Y — ô tỉ lệ tự nhảy về
+      <p>Muốn con số khác thì gõ đè lên X hoặc Y, ô tỉ lệ tự nhảy về
       <b>Custom</b>.</p>
       <h3>Cái ổ khoá bên phải</h3>
       <ul>
         <li><b>Khoá</b> (mặc định): sửa X thì Y tự đổi theo để giữ nguyên tỉ
-            lệ. Đây là thứ bạn cần khi chỉ muốn render to hơn hay nhỏ hơn.</li>
+            lệ. Bạn cần nó khi chỉ muốn render to hơn hay nhỏ hơn.</li>
         <li><b>Mở</b>: X và Y đi riêng, và tỉ lệ khung hình đổi theo cái bạn
             vừa gõ.</li>
       </ul>
@@ -368,11 +368,11 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
     <div>
       <p>Ảnh kiến trúc có một luật bất thành văn: <b>đường thẳng đứng của công
       trình phải thẳng đứng trên ảnh</b>. Ngẩng máy lên chụp toà nhà là bốn góc
-      nhà đổ vào nhau — đó là phối cảnh ba điểm, và nó đọc lên như ảnh chụp
-      vội bằng điện thoại.</p>
+      nhà đổ vào nhau. Đó là phối cảnh ba điểm, và nó đọc lên như ảnh chụp vội
+      bằng điện thoại.</p>
       <p>Cách chữa của dân chụp kiến trúc là <b>để máy nằm ngang tuyệt đối</b>
-      rồi <b>dịch ống kính lên</b> (ống tilt-shift). Hai cái nút này làm đúng
-      chuyện đó, tự tính lấy phần bù:</p>
+      rồi <b>dịch ống kính lên</b> bằng ống tilt-shift. Hai cái nút này làm
+      đúng chuyện đó và tự tính lấy phần bù:</p>
       <div class="cuon">
       <table>
         <thead><tr><th>Nút</th><th>Nó làm gì</th></tr></thead>
@@ -392,27 +392,27 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
       <div class="hop">
         <p><b>Thứ tự dùng:</b> ngắm thoải mái bằng
         <span class="nut">Create Camera from View</span> trước, cứ ngẩng cứ
-        cúi. Rồi mới bấm <span class="nut">Auto V-Shift</span>. Làm ngược lại
-        — nắn trước rồi xoay tay — là mất công hai lần.</p>
+        cúi. Rồi mới bấm <span class="nut">Auto V-Shift</span>. Làm ngược lại,
+        nắn trước rồi xoay tay, là mất công hai lần.</p>
         <p>⚠ Hai nút này đòi camera ở chế độ xoay <b>XYZ Euler</b>. Camera do
-        chính addon dựng ra thì luôn đúng; camera nhập từ nơi khác mà đang ở
+        chính addon dựng ra thì luôn đúng. Camera nhập từ nơi khác mà đang ở
         Quaternion thì addon nói ra và không đụng vào.</p>
       </div>
       <h3>Những ô còn lại</h3>
       <ul>
-        <li><span class="nut">Focal Length</span> — tiêu cự, milimet quang học
-            thật. Nội thất thường 24–35 mm, ngoại thất 35–85 mm. Đổi ô trên
-            cùng sang <b>Orthographic</b> thì chỗ này thành
-            <span class="nut">Ortho Scale</span> (bề rộng khung, tính bằng
-            unit của bản vẽ).</li>
+        <li><span class="nut">Focal Length</span> là tiêu cự, milimet quang
+            học thật. Nội thất thường 24–35 mm, ngoại thất 35–85 mm. Đổi ô
+            trên cùng sang <b>Orthographic</b> thì chỗ này thành
+            <span class="nut">Ortho Scale</span>, tức bề rộng khung tính bằng
+            unit của bản vẽ.</li>
         <li><span class="nut">Shift X</span> / <span class="nut">Shift Y</span>
-            — dịch ống kính bằng tay. Hai nút Auto ở trên ghi thẳng vào đây,
-            nên sau khi bấm bạn vẫn tinh chỉnh tiếp được.</li>
+            dịch ống kính bằng tay. Hai nút Auto ở trên ghi thẳng vào đây, nên
+            sau khi bấm bạn vẫn tinh chỉnh tiếp được.</li>
         <li><span class="nut">Clip Start</span> /
-            <span class="nut">Clip End</span> — gần hơn và xa hơn hai con số
+            <span class="nut">Clip End</span>: gần hơn và xa hơn hai con số
             này thì camera không thấy gì. Đây là chỗ bản vẽ CAD hay bị cắt mất
-            nửa cảnh; xem lại khung vàng đầu trang.</li>
-        <li><span class="nut">Show Safe Areas</span> — vẽ khung an toàn trong
+            nửa cảnh, xem lại khung vàng đầu trang.</li>
+        <li><span class="nut">Show Safe Areas</span> vẽ khung an toàn trong
             khung ngắm.</li>
       </ul>
     </div>
@@ -430,28 +430,29 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
   <div class="doi">
     <div>
       <p>Bật <span class="nut">Enable DOF</span> rồi nói cho camera biết nó
-      lấy nét vào đâu — bằng <b>một trong hai</b> cách, không phải cả hai:</p>
+      lấy nét vào đâu, bằng <b>một trong hai</b> cách chứ không phải cả
+      hai:</p>
       <ul>
-        <li><span class="nut">Focus Object</span> — trỏ vào một vật thể. Vật
-            thể đi đâu thì điểm nét đi theo. Đây là cách chắc ăn khi camera
-            hoặc đồ đạc còn phải xê dịch.</li>
-        <li><span class="nut">Focus Distance</span> — gõ thẳng khoảng cách.
-            Ô này <b>chỉ hiện ra khi chưa trỏ vào vật thể nào</b>.</li>
+        <li><span class="nut">Focus Object</span> trỏ vào một vật thể. Vật thể
+            đi đâu thì điểm nét đi theo. Cách này chắc ăn khi camera hoặc đồ
+            đạc còn phải xê dịch.</li>
+        <li><span class="nut">Focus Distance</span> là gõ thẳng khoảng cách. Ô
+            này <b>chỉ hiện ra khi chưa trỏ vào vật thể nào</b>.</li>
       </ul>
       <p>⚠ <span class="nut">Focus Distance</span> đo bằng <b>chiều dài</b>,
       nên nó là một trong bốn ô đi qua phép quy đổi của
       <span class="nut">Drawing Scale</span> khi lưu và áp preset.</p>
       <h3>Hai ô còn lại</h3>
       <ul>
-        <li><span class="nut">Aperture (F-Stop)</span> — số càng nhỏ, phông
-            càng tan. Nội thất thường f/2.8 – f/5.6; muốn cả phòng nét thì
-            f/8 trở lên.</li>
-        <li><span class="nut">Blades</span> — số lá khẩu. Từ 3 trở lên thì
+        <li><span class="nut">Aperture (F-Stop)</span>: số càng nhỏ, phông
+            càng tan. Nội thất thường f/2.8 – f/5.6; muốn cả phòng nét thì f/8
+            trở lên.</li>
+        <li><span class="nut">Blades</span> là số lá khẩu. Từ 3 trở lên thì
             đốm sáng ngoài vùng nét ra hình đa giác đúng số lá, giống ống kính
             thật. Để 0 là đốm tròn tuyệt đối.</li>
       </ul>
       <div class="hop">
-        <p><b>DOF là thứ tốn thời gian render.</b> Lúc dựng bố cục cứ tắt đi;
+        <p><b>DOF là thứ tốn thời gian render.</b> Lúc dựng bố cục cứ tắt đi,
         bật lại ở lượt render cuối. Và vì DOF nằm trong bộ số mà
         <span class="nut">Copy Settings to Checked</span> chép đi, bật cho một
         camera rồi đắp sang cả loạt là xong một lượt.</p>
@@ -480,26 +481,27 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
       </ol>
       <p>Addon lần lượt đặt từng camera làm camera của Scene, kéo độ phân giải
       của Scene về đúng số X / Y của chính camera đó, rồi render và ghi ra file
-      <b>mang tên camera</b>. Xong cả loạt thì camera, độ phân giải và đường dẫn
-      của Scene được <b>trả về đúng như trước khi bấm</b>.</p>
+      <b>mang tên camera</b>. Xong cả loạt thì camera, độ phân giải và đường
+      dẫn của Scene được <b>trả về đúng như trước khi bấm</b>.</p>
       <p>Trong lúc chạy, bảng đổi hẳn nội dung: tên camera đang render, độ phân
       giải của nó, phần trăm đã xong và <b>thời gian còn lại</b> tính theo tốc
       độ trung bình của những tấm đã render. Muốn dừng thì bấm
-      <span class="nut">Cancel Batch Render</span> — nó dừng <b>sau khi tấm
-      đang chạy xong</b>, không cắt ngang giữa chừng.</p>
+      <span class="nut">Cancel Batch Render</span>. Nó dừng <b>sau khi tấm
+      đang chạy xong</b> chứ không cắt ngang giữa chừng.</p>
       <div class="hop">
         <p><b>Ô đường dẫn đang đỏ là bình thường.</b> Mặc định nó là
-        <i>//render/</i> — đường dẫn <b>tương đối</b> so với chính file .blend,
-        và Blender tô đỏ mọi đường dẫn tương đối chưa trỏ tới một thư mục có
-        thật. Bấm biểu tượng thư mục bên phải, chọn một thư mục thật, là hết
-        đỏ. Chưa chọn gì thì addon dừng ngay và bảo bạn chọn.</p>
+        <i>//render/</i>, một đường dẫn <b>tương đối</b> so với chính file
+        .blend, và Blender tô đỏ mọi đường dẫn tương đối chưa trỏ tới một thư
+        mục có thật. Bấm biểu tượng thư mục bên phải, chọn một thư mục thật,
+        là hết đỏ. Chưa chọn gì thì addon dừng ngay và bảo bạn chọn.</p>
       </div>
-      <p><span class="nut">Save file before render</span> <b>bật sẵn</b>: file
-      được lưu trước khi lượt render bắt đầu. File chưa từng lưu lần nào thì
-      addon mở hộp thoại Save As và <b>không render</b> — cố ý, vì đường dẫn
-      <i>//render/</i> không có nghĩa gì khi file chưa có chỗ đứng trên đĩa.</p>
+      <p><span class="nut">Save file before render</span> <b>bật sẵn</b>, tức
+      file được lưu trước khi lượt render bắt đầu. File chưa từng lưu lần nào
+      thì addon mở hộp thoại Save As và <b>không render</b>. Đó là chủ ý, vì
+      đường dẫn <i>//render/</i> không có nghĩa gì khi file chưa có chỗ đứng
+      trên đĩa.</p>
       <p>⚠ Xoá một camera <b>giữa lúc</b> đang render thì lượt render không
-      chết: addon bỏ qua nó và đi tiếp.</p>
+      chết, addon bỏ qua nó và đi tiếp.</p>
     </div>
     <figure class="anh">
       <img src="data:image/png;base64,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" alt="Khối Batch Render">
@@ -510,8 +512,8 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
 </section>
 
 <section>
-  <p class="nhan-nho">Hỏi nhanh</p>
-  <h2>Mấy chỗ hay vấp</h2>
+  <p class="nhan-nho">Trục trặc</p>
+  <h2>Hay vấp, và cách gỡ</h2>
   <div class="cuon">
   <table>
     <thead><tr><th>Bạn thấy</th><th>Vì sao, và làm gì</th></tr></thead>
@@ -550,8 +552,8 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
       </tr>
       <tr>
         <td>Bảng hiện hộp <b>NOT ACTIVATED</b></td>
-        <td>Bản chưa kích hoạt. Làm theo đúng mấy dòng trong hộp đó — nó có sẵn
-        nút lấy mã máy, đừng gõ tay dãy chữ nào.</td>
+        <td>Bản chưa kích hoạt. Làm theo mấy dòng trong hộp đó. Nó có sẵn nút
+        lấy mã máy, bạn đừng gõ tay dãy chữ nào.</td>
       </tr>
     </tbody>
   </table>
@@ -560,8 +562,8 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
 
 <footer>
   <p>DP_Camera Setup &amp; Batch Render — Ducphan. Sổ tay này dựng bằng máy từ
-  chính giao diện của addon: mọi tấm ảnh trên đây là ảnh chụp bảng thật, không
-  có hình minh hoạ vẽ tay.</p>
+  chính giao diện của addon, nên mọi tấm ảnh trên đây là ảnh chụp bảng thật,
+  không có hình vẽ minh hoạ.</p>
 </footer>
 
 </div>
