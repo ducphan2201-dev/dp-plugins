@@ -3,7 +3,7 @@
  "updated": "(dat luc commit)",
  "gate": "https://dp-gate.vyd-info.workers.dev",
  "hub": {
-  "version": "1.6.15",
+  "version": "1.6.16",
   "module": "dp_hub",
   "zip": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/dp_hub.zip"
  },
