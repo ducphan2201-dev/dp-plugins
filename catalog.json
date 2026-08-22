@@ -166,6 +166,21 @@
    "video": "",
    "icon": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/icon_dpmatpro.png",
    "gated": true
+  },
+  {
+   "code": "dpramchill",
+   "module": "dp_ramchill",
+   "name": "DP_RAMchill",
+   "version": "0.1.0",
+   "free": true,
+   "price": 0,
+   "desc": "Hạ cỡ map lúc render để tiết kiệm VRAM, scene không đổi",
+   "zip": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/dp_ramchill-0.1.0.zip",
+   "released": true,
+   "buy": "https://t.me/ducphan",
+   "video": "",
+   "icon": "",
+   "gated": false
   }
  ]
 }
