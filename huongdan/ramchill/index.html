@@ -128,7 +128,7 @@ td.so{font-family:"JetBrains Mono",monospace;font-variant-numeric:tabular-nums}
 .keo{position:relative;margin:24px 0 0;border:1px solid var(--ke);
   border-radius:12px;overflow:hidden;background:var(--khung);
   line-height:0;touch-action:pan-y}
-.keo img{width:100%;display:block;user-select:none;-webkit-user-drag:none}
+.keo img{width:100%;height:auto;display:block;user-select:none;-webkit-user-drag:none}
 .keo .lop{position:absolute;inset:0;width:50%;overflow:hidden}
 .keo .lop img{position:absolute;top:0;left:0;height:100%;width:auto;
   max-width:none}
@@ -161,7 +161,12 @@ figure.crop h3{margin:0;font-size:16px}
 figure.crop .lech{font-size:13.5px;color:var(--mo);margin:0}
 .crop-anh{position:relative;border-radius:7px;overflow:hidden;
   background:var(--khung);line-height:0}
-.crop-anh img{width:100%;display:block}
+/* ⛔ `height:auto` BAT BUOC. Thay anh mang san thuoc tinh
+   `width="600" height="520"` (de trinh duyet giu cho, khoi giat
+   trang luc tai); co `width:100%` ma khong co dong nay thi be NGANG
+   co lai theo cot con be DOC van la 520 px cua thuoc tinh -> anh bi
+   keo dan doc. Ducphan nhin ra ngay o lan doc dau. */
+.crop-anh img{width:100%;height:auto;display:block}
 .crop-anh .truoc{position:absolute;inset:0;opacity:0;transition:opacity .06s}
 .crop-anh.hien .truoc{opacity:1}
 .doi-nut{font-family:"Bricolage Grotesque",sans-serif;font-size:13.5px;
@@ -491,26 +496,64 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
   </section>
 
   <section>
-    <p class="nhan-nho">Nói thẳng</p>
-    <h2>Những gì chưa đo</h2>
-    <p>Bản <span class="num">0.1.0</span> này mới chạy trên:</p>
-    <ul>
-      <li>Windows + Cycles + OptiX (RTX 3090). <b>Chưa</b> máy Mac hay Linux
-        nào nạp thử.</li>
-      <li><b>Chưa</b> đo với EEVEE.</li>
-      <li>UDIM và dãy ảnh (image sequence): <b>chưa</b> đo lần nào.</li>
-      <li>Map nằm trên vật thể <b>ngoài</b> khung hình được giữ nguyên cỡ —
-        đề phòng gương và mặt kính phản chiếu. Trên cảnh thử, đó là 345 MB
-        chưa lấy lại được.</li>
-    </ul>
-    <p>Gặp chỗ nào không đúng thì báo — kèm file .blend nếu được, vì lỗi phụ
-      thuộc trạng thái thì đoán năm lần cũng không ra.</p>
+    <p class="nhan-nho">Hỏi nhanh</p>
+    <h2>Mấy chuyện hay gặp</h2>
+
+    <h3>Bấm <span class="nut">Scan Scene</span> mà báo hạ được ít quá?</h3>
+    <p>Ba lý do thường gặp, và bảng báo cáo nói ra cả ba. Map trong cảnh vốn
+    đã nhỏ. Hoặc chúng phủ quá nhiều khung hình nên bị chặn ở mức 1/2 — hạ ô
+    <span class="nut">Big on screen</span> xuống thì nới được. Hoặc mọi thứ
+    đều ở sát ống kính, lúc đó không có gì để hạ mà không lộ.</p>
+    <p>Muốn dứt khoát thì chuyển sang
+    <span class="nut">Force one size</span> và tự chọn một cỡ.</p>
+
+    <h3>Render xong map có bị nhỏ vĩnh viễn không?</h3>
+    <p>Không. Map trở lại cỡ gốc ngay khi render xong, kể cả khi bạn bấm huỷ.
+    File ảnh trên đĩa và file <span class="num">.blend</span> không bao giờ bị
+    ghi.</p>
+
+    <h3>Blender chết giữa lúc render thì sao?</h3>
+    <p>Mở lại file là xong — cỡ map nhỏ chưa bao giờ được ghi xuống đĩa. Còn
+    nếu Blender vẫn đang mở mà bảng hiện dòng
+    <b>Maps are shrunk right now</b>, bấm
+    <span class="nut">Restore Full Size</span>.</p>
+
+    <h3>Render animation thì chọn gì?</h3>
+    <p><span class="nut">Force one size</span>. Chế độ
+    <span class="nut">Auto (distance + screen area)</span> đo cảnh
+    <em>một lần</em>, ở khung hình bạn đang đứng — camera bay đi thì bố trí đó
+    không còn đúng nữa.</p>
+
+    <h3>Bảng ghi <b>! 24 off-screen maps kept</b> là sao?</h3>
+    <p>24 tấm map đó chỉ nằm trên vật thể ngoài khung hình, nên addon giữ
+    nguyên cỡ — phòng khi trong cảnh có gương hay mặt kính soi chúng vào.
+    Chắc chắn cảnh không có gương thì dùng
+    <span class="nut">Force one size</span> để lấy nốt phần đó.</p>
+
+    <h3>Có một tấm map tôi muốn giữ nguyên bằng mọi giá?</h3>
+    <p>Mở nhóm <span class="nut">More</span>, gõ tên nó vào ô
+    <span class="nut">Keep at full size</span>. Nhiều tấm thì cách nhau bằng
+    dấu phẩy.</p>
+
+    <h3>Render có chậm đi không?</h3>
+    <p>Có, khoảng 6 giây mỗi tấm trên cảnh thử. Tấm đầu của một mẻ mất thêm
+    chừng 3 giây nữa vì phải quét cảnh; các tấm sau không quét lại. Đổi lại
+    là card đồ hoạ nhẹ đi vài trăm MB — nếu cảnh của bạn đang tràn VRAM thì
+    đó là đổi từ "không render được" sang "render được".</p>
+
+    <h3>Dùng với EEVEE được không?</h3>
+    <p>Addon vẫn đo và hạ cỡ như thường. Nhưng mọi con số trong sổ tay này đo
+    trên Cycles, nên với EEVEE bạn nên tự bấm
+    <span class="nut">Scan Scene</span> rồi nhìn số của chính cảnh mình.</p>
   </section>
 
   <footer>
-    <span>DP_RAMchill 0.1.1 · Blender 4.2+ · GPL-2.0-only ·
-      số bộ nhớ đọc từ <span class="num">System memory statistics</span> của
-      chính Cycles.</span>
+    <p><b>DP_RAMchill</b> 0.1.1 — Ducphan. Addon miễn phí, chia sẻ rộng rãi,
+    không cần mã kích hoạt.</p>
+    <p>Ảnh trong sổ tay này là ảnh chụp bảng thật của addon trên Blender 5.2,
+    không phải hình minh hoạ. Hai tấm render so sánh là cùng một cảnh nội thất
+    thật, cùng seed, cùng 128 samples; số bộ nhớ đọc từ
+    <span class="num">System memory statistics</span> của chính Cycles.</p>
   </footer>
 
 </div>
