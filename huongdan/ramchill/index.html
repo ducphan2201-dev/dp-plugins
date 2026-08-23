@@ -482,16 +482,21 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
     <h2>Addon không đụng vào ba thứ này</h2>
     <ul>
       <li><b>File ảnh trên đĩa</b> không bao giờ bị ghi. Map nhỏ đi chỉ trong
-        bộ nhớ, và được nạp lại từ chính file gốc.</li>
+        bộ nhớ, và được nạp lại từ chính bản gốc — file trên đĩa, hoặc gói
+        nằm trong .blend nếu map đã đóng gói.</li>
       <li><b>File .blend</b> không bao giờ bị ghi. Lưu file trong lúc map đang
         nhỏ cũng không sao, addon trả cỡ trước khi Blender lưu.</li>
       <li><b>Cảnh của bạn</b> có map trở lại cỡ gốc ngay khi render xong, kể
         cả khi bạn bấm huỷ giữa chừng.</li>
     </ul>
     <div class="hop">
-      <p><b>Map đóng gói trong .blend và map sinh ra</b> (Generated) thì addon
-        bỏ qua, có chủ ý: chúng không có file trên đĩa để nạp lại, thu nhỏ là
-        mất thật.</p>
+      <p><b>Map đóng gói trong .blend</b> (Pack Resources) nay cũng được hạ
+        cỡ. Nó được trả về từ chính cái gói nằm trong .blend chứ không phải
+        từ file trên đĩa — nên cảnh mang sang máy khác, không có thư mục
+        texture đi kèm, vẫn tiết kiệm được như thường.</p>
+      <p><b>Map sinh ra</b> (Generated) và map <b>đang sửa dở chưa lưu</b>
+        thì addon bỏ qua, có chủ ý: pixel của chúng không nằm ở đâu khác để
+        nạp lại, thu nhỏ là mất thật.</p>
     </div>
   </section>
 
@@ -548,7 +553,7 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
   </section>
 
   <footer>
-    <p><b>DP_RAMchill</b> 0.1.1 — Ducphan. Addon miễn phí, chia sẻ rộng rãi,
+    <p><b>DP_RAMchill</b> 0.1.2 — Ducphan. Addon miễn phí, chia sẻ rộng rãi,
     không cần mã kích hoạt.</p>
     <p>Ảnh trong sổ tay là ảnh chụp bảng thật của addon trên Blender 5.2, không
     phải hình vẽ minh hoạ. Hai tấm render so sánh là cùng một cảnh nội thất
