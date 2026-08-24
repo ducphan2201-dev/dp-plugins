@@ -32,6 +32,32 @@ h1{font-family:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
 h1 span{color:var(--nhan)}
 .dat{font-size:20px;color:var(--mo);margin:14px 0 0;max-width:34em}
 
+/* --- nut tai Hub: khong co Hub thi khong dung duoc cuon nao ben duoi --- */
+.tai{margin:26px 0 2px;display:flex;flex-wrap:wrap;align-items:center;
+  gap:13px 20px}
+.nut-tai{display:inline-flex;align-items:center;gap:13px;
+  font-family:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  font-weight:700;font-size:clamp(19px,3.1vw,30px);letter-spacing:-.02em;
+  line-height:1;text-decoration:none;text-transform:uppercase;
+  padding:clamp(14px,2vw,19px) clamp(21px,3vw,32px);
+  color:#12140f;background:var(--nhan);border:2px solid var(--nhan);
+  border-radius:12px;box-shadow:6px 6px 0 rgba(0,0,0,.28);
+  transition:transform .16s ease,box-shadow .16s ease,filter .16s ease}
+.nut-tai .mui{font-size:.82em;transition:transform .22s ease}
+.nut-tai:hover,.nut-tai:focus-visible{transform:translate(-2px,-2px);
+  box-shadow:9px 9px 0 rgba(0,0,0,.32);filter:brightness(1.07)}
+.nut-tai:hover .mui,.nut-tai:focus-visible .mui{transform:translateY(3px)}
+.nut-tai:active{transform:translate(3px,3px);
+  box-shadow:2px 2px 0 rgba(0,0,0,.26)}
+@media (prefers-reduced-motion:no-preference){
+  .nut-tai{animation:tho 2.6s ease-in-out infinite}
+}
+@keyframes tho{0%,100%{box-shadow:6px 6px 0 rgba(0,0,0,.28)}
+  50%{box-shadow:6px 6px 0 rgba(0,0,0,.28),0 0 0 7px rgba(226,165,90,.20)}}
+.tai-phu{font-family:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  font-size:12.5px;color:var(--mo);line-height:1.55;max-width:36ch}
+.tai-phu b{color:var(--chu)}
+
 /* --- chang viec: cai nhan doc theo doc, gom may buoc cung mot viec --- */
 .chang{font-family:"Bricolage Grotesque",sans-serif;font-size:12px;
   font-weight:700;letter-spacing:.14em;text-transform:uppercase;
@@ -76,6 +102,10 @@ a.the:hover{border-color:var(--nhan);background:var(--nhan-nen)}
 <header>
   <h1>Sổ tay <span>DP-Addon Workflow</span></h1>
   <p class="dat">10 addon, xếp theo đúng thứ tự một bản vẽ đi qua — từ lúc đưa model vào cho tới lúc xuất ảnh. Bấm vào một dòng để mở sổ tay của nó.</p>
+  <div class="tai">
+    <a class="nut-tai" href="https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/dp_hub.zip" download>TẢI DP-HUB TẠI ĐÂY<span class="mui" aria-hidden="true">↓</span></a>
+    <span class="tai-phu">Bảng <b>DP_Hub v1.6.16</b> — miễn phí. Cài một lần vào Blender, mọi addon dưới đây cài và cập nhật ngay trong bảng đó.</span>
+  </div>
 </header>
 
 <p class="chang">Đưa model vào</p>
