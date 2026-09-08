@@ -199,7 +199,7 @@
    "version": "2.2.1",
    "free": false,
    "price": 88000,
-   "desc": "Vẽ CAD ngay trong Blender: line, rect, arc, offset, đùn, boolean",
+   "desc": "Vẽ CAD ngay trong Blender: bắt điểm, đường gióng, đùn khối",
    "zip": "https://dp-gate.vyd-info.workers.dev/dl?product=dpsketch&file=dp_sketch-2.2.1.zip",
    "released": true,
    "buy": "https://t.me/ducphan",
