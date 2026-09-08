@@ -3,7 +3,7 @@
  "updated": "(dat luc commit)",
  "gate": "https://dp-gate.vyd-info.workers.dev",
  "hub": {
-  "version": "1.6.16",
+  "version": "1.6.17",
   "module": "dp_hub",
   "zip": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/dp_hub.zip"
  },
@@ -28,6 +28,7 @@
    "released": true,
    "buy": "https://t.me/ducphan",
    "video": "https://youtu.be/jjl5njiEOgE",
+   "guide": "https://ducphan2201-dev.github.io/dp-plugins/huongdan/cadsync/",
    "icon": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/icon_dpcadsync.png",
    "gated": false,
    "companion": {
@@ -51,6 +52,7 @@
    "released": true,
    "buy": "https://t.me/ducphan",
    "video": "https://www.youtube.com/watch?v=dU9-zXDyCM0&t=125s",
+   "guide": "https://ducphan2201-dev.github.io/dp-plugins/huongdan/maximporter/",
    "icon": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/icon_dpmax.png",
    "gated": true
   },
@@ -66,6 +68,7 @@
    "released": true,
    "buy": "https://t.me/ducphan",
    "video": "",
+   "guide": "https://ducphan2201-dev.github.io/dp-plugins/huongdan/lighting/",
    "icon": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/icon_dplight.png",
    "gated": true
   },
@@ -81,6 +84,7 @@
    "released": true,
    "buy": "https://t.me/ducphan",
    "video": "",
+   "guide": "https://ducphan2201-dev.github.io/dp-plugins/huongdan/camera/",
    "icon": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/icon_dpcam.png",
    "gated": true
   },
@@ -96,6 +100,7 @@
    "released": true,
    "buy": "https://t.me/ducphan",
    "video": "",
+   "guide": "https://ducphan2201-dev.github.io/dp-plugins/huongdan/postprocess/",
    "icon": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/icon_dppost.png",
    "gated": true
   },
@@ -111,6 +116,7 @@
    "released": true,
    "buy": "https://t.me/ducphan",
    "video": "https://www.youtube.com/watch?v=jrk3daBxIe0",
+   "guide": "https://ducphan2201-dev.github.io/dp-plugins/huongdan/susync/",
    "icon": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/icon_dpsusync.png",
    "gated": true,
    "companion": {
@@ -134,6 +140,7 @@
    "released": true,
    "buy": "https://t.me/ducphan",
    "video": "",
+   "guide": "https://ducphan2201-dev.github.io/dp-plugins/huongdan/optimize/",
    "icon": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/icon_dpoptimize.png",
    "gated": false
   },
@@ -149,6 +156,7 @@
    "released": true,
    "buy": "https://t.me/ducphan",
    "video": "",
+   "guide": "https://ducphan2201-dev.github.io/dp-plugins/huongdan/tiles/",
    "icon": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/icon_dptiles.png",
    "gated": true
   },
@@ -164,6 +172,7 @@
    "released": true,
    "buy": "https://t.me/ducphan",
    "video": "",
+   "guide": "https://ducphan2201-dev.github.io/dp-plugins/huongdan/matpro/",
    "icon": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/icon_dpmatpro.png",
    "gated": true
   },
@@ -179,8 +188,25 @@
    "released": true,
    "buy": "https://t.me/ducphan",
    "video": "",
+   "guide": "https://ducphan2201-dev.github.io/dp-plugins/huongdan/ramchill/",
    "icon": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/icon_dpramchill.png",
    "gated": false
+  },
+  {
+   "code": "dpsketch",
+   "module": "dp_sketch",
+   "name": "DP_Sketch",
+   "version": "2.2.0",
+   "free": false,
+   "price": 88000,
+   "desc": "Vẽ CAD ngay trong Blender: line, rect, arc, offset, đùn, boolean",
+   "zip": "https://dp-gate.vyd-info.workers.dev/dl?product=dpsketch&file=dp_sketch-2.2.0.zip",
+   "released": true,
+   "buy": "https://t.me/ducphan",
+   "video": "",
+   "guide": "https://ducphan2201-dev.github.io/dp-plugins/huongdan/sketch/",
+   "icon": "https://raw.githubusercontent.com/ducphan2201-dev/dp-plugins/main/icon_dpsketch.png",
+   "gated": true
   }
  ]
 }
