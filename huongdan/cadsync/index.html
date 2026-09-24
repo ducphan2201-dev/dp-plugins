@@ -162,6 +162,42 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
   </div>
 </header>
 
+<!-- ========================================================== cai dat -->
+<section>
+  <p class="nhan-nho">Cài đặt</p>
+  <h2>Hai nửa, cả hai lấy từ DP_Hub</h2>
+  <p>Addon có hai nửa: <b>nửa Blender</b> (bảng DP CAD Sync) và <b>nửa
+  CAD</b> (file <b>dp_cadsync.lsp</b>, chứa lệnh DPSYNC). Cả hai đều nằm trên
+  ô <b>DP_CadSyncBlender</b> của DP_Hub, tab <b>DP</b> trên thanh bên N. Addon
+  <b>miễn phí</b>: không cần mã kích hoạt, không có bước mua.</p>
+
+  <h3>Nửa Blender</h3>
+  <ol class="buoc">
+    <li>Trong Blender, bấm <span class="nut">N</span>, chọn tab <b>DP</b>
+    (bảng của DP_Hub).</li>
+    <li>Ở ô <b>DP_CadSyncBlender</b>, bấm <b>Install</b>. Hub tự tải về và bật
+    addon.</li>
+    <li>Tab <b>DP CAD Sync</b> hiện ra trên thanh bên N là xong.</li>
+  </ol>
+
+  <h3>Nửa CAD</h3>
+  <ol class="buoc">
+    <li>Cũng ở ô ấy, dưới dòng <b>Needs the CAD half too</b>, bấm nút
+    <b>CAD side (unzip, APPLOAD)</b>. Hub tải về một file zip
+    (<b>DP_CadSync_CAD_v….zip</b>) và cất vào thư mục <b>Downloads</b> của
+    bạn. Nút này bấm được cả khi chưa cài nửa Blender.</li>
+    <li><b>Giải nén</b> file zip ấy ra, được file <b>dp_cadsync.lsp</b>. Đừng
+    mang thẳng file zip đi nạp: CAD không đọc được.</li>
+    <li>Trong CAD, gõ <b>APPLOAD</b>, chọn <b>dp_cadsync.lsp</b>, rồi thêm nó
+    vào <b>Startup Suite</b> để lần sau CAD tự nạp.</li>
+  </ol>
+  <div class="hop">
+    <p><b>Hai nửa phải cùng số hiệu.</b> Hub ghi số hiệu nửa CAD ngay trên
+    dòng nhắc; hai số lệch nhau thì ô hiện chữ <b>MISMATCH</b>. Cập nhật nửa
+    Blender xong thì tải lại cả nửa CAD, rồi nạp lại bằng APPLOAD.</p>
+  </div>
+</section>
+
 <!-- ============================================================ o dau -->
 <section>
   <p class="nhan-nho">Bảng nằm ở đâu</p>
@@ -219,11 +255,11 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
       <table>
         <thead><tr><th>Chọn</th><th>Nghĩa</th></tr></thead>
         <tbody>
-          <tr><td>Drawing mm → 1 unit = 1 m</td><td><b>Mặc định.</b> Bản vẽ vẽ
+          <tr><td><span class="nut">Drawing mm -> 1 unit = 1 m</span></td><td><b>Mặc định.</b> Bản vẽ vẽ
           bằng mm, sang Blender ra kích thước thật.</td></tr>
-          <tr><td>Drawing mm → 1 unit = 1 mm</td><td>Giữ nguyên con số của bản
+          <tr><td><span class="nut">Drawing mm -> 1 unit = 1 mm</span></td><td>Giữ nguyên con số của bản
           vẽ. Cho file <b>.blend</b> vốn đã dựng theo quy ước mm.</td></tr>
-          <tr><td>Drawing cm → 1 unit = 1 m</td><td>Cho bản vẽ vẽ bằng
+          <tr><td><span class="nut">Drawing cm -> 1 unit = 1 m</span></td><td>Cho bản vẽ vẽ bằng
           cm.</td></tr>
         </tbody>
       </table>
@@ -257,9 +293,10 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
       <span class="nut">No export file yet.</span> Nghĩa là chưa lần DPSYNC
       nào chạy xong, hoặc nửa CAD chưa được nạp.</p>
       <div class="hop">
-        <p><b>Nửa CAD nạp thế nào:</b> gõ <b>APPLOAD</b>, chọn file
-        <b>dp_cadsync.lsp</b>, rồi thêm nó vào <b>Startup Suite</b> để lần sau
-        CAD tự nạp. Riêng <b>VinaCAD</b> bắt buộc phải qua Startup Suite, vì
+        <p><b>Nửa CAD nạp thế nào:</b> tải file zip bằng nút
+        <b>CAD side (unzip, APPLOAD)</b> trên DP_Hub, giải nén, gõ
+        <b>APPLOAD</b>, chọn file <b>dp_cadsync.lsp</b>, rồi thêm nó vào
+        <b>Startup Suite</b> để lần sau CAD tự nạp. Riêng <b>VinaCAD</b> bắt buộc phải qua Startup Suite, vì
         thư mục Support của nó không tự nạp file khởi động.</p>
       </div>
     </div>
@@ -350,7 +387,9 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
 
   <h3>Gõ DPSYNC mà CAD báo không có lệnh?</h3>
   <p>Nửa CAD chưa nạp. Gõ <b>APPLOAD</b>, chọn <b>dp_cadsync.lsp</b>, và nhớ
-  thêm vào <b>Startup Suite</b>, không thì lần mở CAD sau lại mất.</p>
+  thêm vào <b>Startup Suite</b>, không thì lần mở CAD sau lại mất. Chưa có
+  file ấy thì lấy ở DP_Hub: nút <b>CAD side (unzip, APPLOAD)</b> trên ô
+  DP_CadSyncBlender, rồi giải nén (xem mục <b>Cài đặt</b>).</p>
 
   <h3>Bên CAD chạy xong mà Blender không đổi gì?</h3>
   <p>Xem ô <span class="nut">Auto sync</span> còn tích không. Còn tích mà vẫn
@@ -359,7 +398,7 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
 
   <h3>Bản vẽ sang Blender nhỏ xíu hoặc to khổng lồ?</h3>
   <p>Sai ô <span class="nut">Scale</span>. Bản vẽ vẽ bằng mm mà muốn kích
-  thước thật thì chọn <b>Drawing mm → 1 unit = 1 m</b>.</p>
+  thước thật thì chọn <span class="nut">Drawing mm -> 1 unit = 1 m</span>.</p>
 
   <h3>Cung tròn nhìn thành hình đa giác?</h3>
   <p>Hạ <span class="nut">Arc detail</span> xuống. Nó là khoảng hở cho phép,
