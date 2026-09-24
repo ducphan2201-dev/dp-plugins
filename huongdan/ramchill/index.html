@@ -212,7 +212,9 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
       <em>đúng lúc</em> Cycles nạp lên card, rồi trả về cỡ gốc ngay khi render
       xong. Cảnh của bạn không đổi một pixel. Muốn nhẹ cả lúc dựng cảnh thì có
       nút Bake ghi map ra file nhỏ. Card vẫn chật thì bỏ bớt vật ngoài khung
-      hình lúc render.</p>
+      hình lúc render. Bản 0.4.0 thêm hai việc nữa, cả hai đều nằm ngoài
+      chuyện map: <b>Mesh Optimize</b> giảm tam giác cho cả cảnh, và sau mỗi
+      lần render addon trả phần RAM Blender không dùng nữa về cho máy.</p>
 
     <div class="so-lieu">
       <div><b>&minus;402 MB</b><span>bộ nhớ card, cảnh phòng ngủ thật</span></div>
@@ -238,7 +240,7 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
       <p class="nhan-nho">Trong sổ tay này</p>
       <ol>
         <li><a href="#bat-dau">Bắt đầu nhanh</a></li>
-        <li><a href="#moi">Có gì mới so với bản 0.1.2</a></li>
+        <li><a href="#moi">Có gì mới ở bản 0.4.0</a></li>
         <li><a href="#che-do">Ba chế độ</a></li>
         <li><a href="#auto">Chế độ Auto</a></li>
         <li><a href="#nhin-thay">Auto chỉ tính phần ống kính thấy</a></li>
@@ -246,7 +248,9 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
         <li><a href="#force">Force one size</a></li>
         <li><a href="#more">Nhóm More</a></li>
         <li><a href="#bake">Bake Smaller Maps</a></li>
+        <li><a href="#luoi">Mesh Optimize: bớt tam giác</a></li>
         <li><a href="#ngoai-khung">Bỏ vật ngoài khung hình</a></li>
+        <li><a href="#nha-ram">Trả RAM về cho máy sau render</a></li>
         <li><a href="#nhoe">Ảnh render có bị nhoè không</a></li>
         <li><a href="#khong-dung">Addon không đụng vào đâu</a></li>
         <li><a href="#gioi-han">Giới hạn đã biết</a></li>
@@ -293,8 +297,42 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
   </section>
 
   <section id="moi">
-    <p class="nhan-nho">Bản 0.3.4</p>
-    <h2>Có gì mới so với bản 0.1.2</h2>
+    <p class="nhan-nho">Bản 0.4.0</p>
+    <h2>Có gì mới ở bản 0.4.0</h2>
+    <ul class="moi">
+      <li><span class="ban">Mới</span> Nhóm <b>Mesh Optimize</b> với nút
+        <span class="nut">Optimize Meshes</span>: bớt tam giác cho cả cảnh —
+        chia mịn render thấp một bậc, gộp mặt phẳng, giảm lưới dày. Đo trên
+        một cảnh nội thất thật ngày 18/09/2026: RAM render 12.145 MB xuống
+        9.557 MB, dưới 1% điểm ảnh khác thấy được. Lưới gốc cất ra file riêng,
+        <span class="nut">Restore Original Meshes</span> trả lại. Xem
+        <a href="#luoi">mục Mesh Optimize</a>.</li>
+      <li><span class="ban">Mới</span> Bảng con <b>Bake Options</b>: ô
+        <span class="nut">Format</span> cho phép bake ra <b>JPG</b> thay vì
+        PNG, kèm ô <span class="nut">JPG Quality</span>. Một tấm map 2K đi từ
+        7,6 MB xuống 1,4 MB trên đĩa. Xem
+        <a href="#bake-options">mục Bake Options</a>.</li>
+      <li><span class="ban">Mới</span> Nút
+        <span class="nut">Bake Selected Objects</span>: ép map của
+        <em>các vật đang chọn</em> về một cỡ, xuống tới 64 px, không phụ thuộc
+        chế độ Off/Auto/Force. Dành cho những vật nhỏ không cần map to. Map
+        dùng chung với vật khác được tách bản riêng trước.</li>
+      <li><span class="ban">Mới</span> Ô
+        <span class="nut">Hand Memory Back After Render</span> và
+        <span class="nut">Free Kept Render Data</span> trong nhóm Cycles
+        Memory: render xong, phần bộ nhớ Blender không còn dùng được trả về
+        cho máy. Đo trên cảnh phòng ngủ có mở cửa sổ, bật Persistent Data:
+        sau render 4.676 MB xuống 1.798 MB. Xem
+        <a href="#nha-ram">mục này</a>.</li>
+      <li><span class="ban">Sửa</span> Render một loạt camera (DP_Camera Batch
+        Render) ở chế độ Auto không còn làm sập khung nhìn ở camera đầu tiên.
+        Việc trả RAM cũng chờ hết cả chuỗi render mới làm, không chen vào giữa
+        hai tấm.</li>
+      <li><span class="ban">Cải tiến</span> Dò cảnh mỗi camera trong một lượt
+        batch nhanh hơn khoảng ba lần, và kế hoạch hạ map không đổi.</li>
+    </ul>
+
+    <h3>Từ các bản trước</h3>
     <ul class="moi">
       <li><span class="ban">Mới</span> Nút
         <span class="nut">Bake Smaller Maps</span> ghi map ra file nhỏ hơn,
@@ -546,7 +584,10 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
     <h2>Ba thứ ít khi phải đụng tới</h2>
     <div class="doi">
       <div>
-        <p>Nhóm <span class="nut">More</span> nằm dưới khung Bake, mặc định
+        <p>Nhóm <span class="nut">More</span> nằm dưới khung Bake và hai
+          bảng con <span class="nut">Bake Options</span>,
+          <span class="nut">Mesh Optimize</span> (thứ tự từ trên xuống: Bake →
+          Bake Options → Mesh Optimize → More → Cycles Memory), mặc định
           đóng, bấm vào tên nhóm để mở. Ở chế độ
           <span class="nut">Off</span> cả nhóm bị làm mờ.</p>
         <ul>
@@ -674,6 +715,217 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
         </tbody>
       </table>
     </div>
+
+    <h3 id="bake-options">Bake Options: định dạng file, và bake riêng cho vật
+      đang chọn</h3>
+    <p>Ngay dưới khung Bake có bảng con <span class="nut">Bake Options</span>.
+      Mở ra có ba thứ, và cả ba đều mới ở bản 0.4.0.</p>
+    <div class="cuon">
+      <table>
+        <thead><tr><th>Ô</th><th>Làm gì</th></tr></thead>
+        <tbody>
+          <tr><td><span class="nut">Format</span></td>
+              <td><span class="nut">Lossless (PNG)</span> là mặc định: giữ
+                từng pixel, map EXR vẫn ra EXR.
+                <span class="nut">JPG (.jpg)</span> hoặc
+                <span class="nut">JPEG (.jpeg)</span> ghi ra file JPG, nhẹ hơn
+                nhiều trên đĩa và trong file .blend đóng gói. Map có nền trong
+                suốt và map 16 bit/HDR vẫn được ghi không mất dữ liệu, dù bạn
+                chọn JPG.</td></tr>
+          <tr><td><span class="nut">JPG Quality</span></td>
+              <td>Chất lượng nén, mặc định <span class="num">90</span>. Ở mức
+                này nhìn không phân biệt được với bản gốc. Hạ xuống thì file
+                nhỏ hơn nữa và map bắt đầu nhoè. Ô này mờ đi khi Format đang
+                để Lossless.</td></tr>
+          <tr><td><span class="nut">Bake Selected Objects</span></td>
+              <td>Ghi map của <em>các vật đang chọn</em> ra file mới ở cỡ
+                <span class="nut">Max Size</span>. Bấm nút là hiện hộp chọn cỡ
+                (64 · 128 · 256 · 512 · 1024 · 2048 px, hoặc
+                <span class="nut">Keep size</span> nếu chỉ muốn đổi định
+                dạng). Dòng <span class="dong">N objects selected</span> ngay
+                trên nút cho biết đang chọn mấy vật.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="hop">
+      <p><b>JPG làm nhẹ ĐĨA, không làm nhẹ RAM.</b> Đo ngày 18/09/2026 trên
+        một tấm map 2K: file trên đĩa đi từ 7,6 MB xuống 1,4 MB, còn RAM
+        Blender giữ tấm đó vẫn là 18,1 MB — y như bản PNG. Lý do đơn giản:
+        vào tới bộ nhớ thì ảnh nào cũng được giải nén ra cùng một số pixel.
+        <b>Chỉ cỡ nhỏ đi mới bớt RAM.</b> Nên chọn JPG khi file .blend hoặc
+        thư mục map đang quá nặng để gửi đi, còn muốn nhẹ card thì vẫn phải
+        hạ cỡ.</p>
+      <p><b>Bake Selected Objects đi thẳng xuống dưới sàn 512 px</b> của chế
+        độ Auto và Force. Đó là chủ ý: một cái núm cửa hay một cuốn sách trên
+        kệ không cần map 2K. Map nào đang dùng chung với vật <em>không</em>
+        được chọn thì addon tách một bản riêng cho vật đang chọn trước
+        (<span class="dong">Shared maps get their own copy</span>), nên phần
+        còn lại của cảnh không bị ảnh hưởng.</p>
+      <p>Nút này không phụ thuộc chế độ trên cùng: ở
+        <span class="nut">Off</span> nó vẫn dùng được. Và nó ghi cùng đường
+        với <span class="nut">Bake Smaller Maps</span>, nên
+        <span class="nut">Restore Original Maps</span> trả lại cả hai.</p>
+    </div>
+  </section>
+
+
+  <section id="luoi">
+    <p class="nhan-nho">Mới từ bản 0.4.0 · bảng con Mesh Optimize</p>
+    <h2><span class="nut">Optimize Meshes</span>: bớt tam giác, ảnh gần như y
+      hệt</h2>
+    <p style="max-width:62ch">Mọi thứ ở trên chỉ động tới <b>map</b>. Nhưng
+      một cảnh nội thất nhập từ 3ds Max nặng vì cả hai phía: map to, và lưới
+      dày — ghế sofa chia mịn bốn bậc, cái gối vài trăm nghìn tam giác, tay
+      nắm tủ nhân lên ba mươi lần. Nhóm <b>Mesh Optimize</b> lo phía thứ hai.
+      Nó <em>không</em> phụ thuộc ô chế độ trên cùng: để
+      <span class="nut">Off</span> nó vẫn chạy.</p>
+
+    <div class="hop">
+      <p><b>Khác mọi thứ còn lại trong addon: nút này SỬA CẢNH CỦA BẠN.</b>
+        Map chỉ được thu nhỏ trong lúc render rồi trả lại ngay; còn lưới thì
+        bị giảm thật và nằm lại như vậy cho tới khi bạn bấm
+        <span class="nut">Restore Original Meshes</span>. Lưới gốc được cất ra
+        một file <span class="num">.blend</span> riêng cạnh file của bạn, nên
+        phải <b>lưu file trước khi bấm</b> — chưa lưu thì addon từ chối chạy
+        và nói lý do.</p>
+    </div>
+
+    <h3>Bấm một nút, trả lời bảy câu</h3>
+    <p>Bấm <span class="nut">Optimize Meshes</span> là hiện hộp thoại. Bảy ô,
+      để nguyên cũng chạy được.</p>
+    <div class="cuon">
+      <table>
+        <thead><tr><th>Ô</th><th>Nghĩa là</th></tr></thead>
+        <tbody>
+          <tr><td><span class="nut">Apply to</span></td>
+              <td><span class="nut">Whole scene</span> (mặc định) hay
+                <span class="nut">Selected objects</span>.</td></tr>
+          <tr><td><span class="nut">Subdivision one level lower</span></td>
+              <td>Bậc <b>render</b> của mọi modifier Subdivision trừ một. Bậc
+                cũ được cất vào chính modifier đó, không đụng vào lưới. Đây
+                thường là chỗ tiết kiệm lớn nhất mà mắt không thấy: đo được
+                RAM render giảm 24%, 0,5% điểm ảnh khác.</td></tr>
+          <tr><td><span class="nut">Reduce dense meshes</span></td>
+              <td>Gộp các mặt nằm cùng một mặt phẳng, rồi giảm số mặt của
+                những lưới dày. Việc này <b>nướng thẳng vào lưới</b> chứ không
+                gắn modifier — gắn Decimate làm modifier thì RAM render còn
+                <em>tăng</em>, vì Blender giữ cả lưới gốc lẫn bản giảm.</td></tr>
+          <tr><td><span class="nut">Keep</span></td>
+              <td><span class="nut">50% of faces</span> (mặc định),
+                <span class="nut">75% of faces</span> an toàn hơn nhưng tiết
+                kiệm ít, hoặc <span class="nut">Flat faces only</span> —
+                chỉ gộp mặt phẳng, hình không đổi một chút nào.</td></tr>
+          <tr><td><span class="nut">Meshes over</span></td>
+              <td>Chỉ giảm lưới có từ ngần này tam giác trở lên, mặc định
+                <span class="num">20.000</span>. Lưới nhẹ hơn được để yên và
+                đếm vào dòng <span class="dong">N meshes already light</span>.</td></tr>
+          <tr><td><span class="nut">Test renders + report</span></td>
+              <td>Render thử một tấm trước và một tấm sau, rồi so. Tốn hai lần
+                render thử, đổi lại bạn có số thật thay vì phải tin. Cảnh
+                không có camera thì báo
+                <span class="dong">! no camera: no test render</span>.</td></tr>
+          <tr><td><span class="nut">Test size</span></td>
+              <td>Cỡ của hai tấm render thử, tính theo phần trăm cỡ render
+                thật. Mặc định <span class="num">50</span>%, số mẫu tối đa
+                64.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Bảng báo cáo sau khi chạy</h3>
+    <div class="cuon">
+      <table>
+        <thead><tr><th>Dòng trên bảng</th><th>Nghĩa là</th></tr></thead>
+        <tbody>
+          <tr><td><span class="dong">optimized N meshes</span></td>
+              <td>Số lưới đã giảm.</td></tr>
+          <tr><td><span class="dong">2,415,297 -&gt; 1,208,114 tris</span></td>
+              <td>Tổng số tam giác của riêng những lưới đó, trước và sau.</td></tr>
+          <tr><td><span class="dong">N subdivisions -1 level</span></td>
+              <td>Số modifier Subdivision đã hạ một bậc render.</td></tr>
+          <tr><td><span class="dong">N under subdivision: level only</span></td>
+              <td>Lưới nằm dưới một Subdivision thì chỉ hạ bậc, không giảm
+                lưới — giảm cả hai là hỏng hình.</td></tr>
+          <tr><td><span class="dong">! N with shape keys kept</span></td>
+              <td>Lưới có shape key được để nguyên: phép giảm không giữ được
+                shape key.</td></tr>
+          <tr><td><span class="dong">! N linked meshes kept</span></td>
+              <td>Lưới link từ file .blend khác. Addon không sửa file của người
+                khác.</td></tr>
+          <tr><td><span class="dong">! N would lose shape, kept</span></td>
+              <td>Giảm xong thì hộp bao lệch quá nhiều — hình bị ăn mòn — nên
+                addon trả lưới đó về nguyên.</td></tr>
+          <tr><td><span class="dong">nothing to optimize</span></td>
+              <td>Không có gì để làm: cảnh nhẹ sẵn, hoặc bạn tắt cả hai ô.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Khung <span class="dong">Test render (…)</span>: số đo của chính cảnh
+      bạn</h3>
+    <p>Bật <span class="nut">Test renders + report</span> thì dưới báo cáo có
+      thêm một khung bốn cột — <b>Before</b>, <b>After</b>, <b>Change</b> —
+      với hai hàng:</p>
+    <ul>
+      <li><b>RAM</b> hoặc <b>VRAM</b>: bộ nhớ lần render thử dùng. Ghi VRAM
+        khi bạn render bằng card.</li>
+      <li><b>Tris</b>: số tam giác của riêng những lưới đã giảm — dòng
+        <span class="dong">*triangles of the reduced meshes</span> ngay dưới
+        bảng nhắc đúng điều đó.</li>
+    </ul>
+    <p>Dưới bảng là hai con số so ảnh:
+      <span class="dong">Pixels changed: N%</span> và
+      <span class="dong">Mean difference: N%</span>. Dưới 3% thì addon ghi
+      <span class="dong">Looks the same (under 3%)</span>; quá ngưỡng thì
+      <span class="dong">! Over 3%: check the images</span>. Muốn tự nhìn thì
+      bấm <span class="nut">Show Test Image</span>, nó mở ảnh render thử
+      trong một cửa sổ Image Editor mới.</p>
+    <div class="hop">
+      <p><b>Bảng cố ý KHÔNG có hàng thời gian.</b> Lần render "trước" là lần
+        render đầu của phiên, nên phần lớn thời gian của nó là nạp chương
+        trình lên card chứ không phải dựng lưới. In ra một con số như vậy là
+        khoe nhầm công.</p>
+    </div>
+
+    <h3>Được gì, bằng số</h3>
+    <p style="max-width:62ch">Đo ngày 18/09/2026, Blender 5.2, để nguyên mọi ô
+      mặc định:</p>
+    <div class="cuon">
+      <table>
+        <thead><tr><th>Cảnh</th><th>Đo cái gì</th><th>Trước</th><th>Sau</th>
+          <th>Điểm ảnh khác</th></tr></thead>
+        <tbody>
+          <tr><td>Cảnh thử 16,1 triệu tam giác, 378 map</td>
+              <td>RAM render (CPU)</td><td class="so">12.145 MB</td>
+              <td class="so">9.557 MB</td><td class="so">0,90%</td></tr>
+          <tr><td>Cảnh thử, cùng file</td>
+              <td>VRAM card (OptiX)</td><td class="so">3.839 MB</td>
+              <td class="so">3.109 MB</td><td class="so">0,94%</td></tr>
+          <tr><td>Phòng ngủ PN4</td>
+              <td>RAM render (CPU)</td><td class="so">4.509 MB</td>
+              <td class="so">3.409 MB</td><td class="so">0,51%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Giảm sâu hơn nữa thì hỏng: thử để lại 25% số mặt, sàn gỗ vỡ vân và
+      3,53% điểm ảnh đổi — nên đường đó đã bị bỏ, ô
+      <span class="nut">Keep</span> không có mức ấy.</p>
+
+    <h3>Trả lại lưới gốc</h3>
+    <p>Chạy xong, bảng hiện dòng
+      <span class="dong">N meshes, N subdivisions</span> và nút
+      <span class="nut">Restore Original Meshes</span>. Bấm nút đó là mọi lưới
+      và mọi bậc chia mịn về đúng như trước, bảng ghi
+      <span class="dong">restored N meshes, N subdivisions</span>.</p>
+    <p>Lưới gốc nằm trong
+      <span class="num">//DP_RAMchill_meshes/&lt;tên file&gt;_originals.blend</span>,
+      cạnh file của bạn — dòng
+      <span class="dong">Originals are saved to a file</span> trong hộp thoại
+      nói đúng chỗ đó. <b>Đừng xoá file ấy</b> chừng nào còn muốn quay lại:
+      mất nó thì bảng báo
+      <span class="dong">! N originals missing</span> và những lưới đó ở lại
+      dạng đã giảm. Gửi cảnh cho người khác mà muốn họ quay lại được thì gửi
+      kèm thư mục đó.</p>
   </section>
 
   <section id="ngoai-khung">
@@ -731,6 +983,89 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
         <img src="data:image/png;base64,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Dx+WvyWU/DHGx44d++yzz2iaXr9+fWNj4+rVq7/99lv5lcceeywUScbExLzyyiuFhYU1NTWnTp166KGHJA8lFEXdfvvtIJCSkpIPPvhg+vTpwK5Dhw699957W7ZsuXDhwmeffdat9ILclXJbt27dqVOnLl68ePTo0UWLFvVa8t83s9///sSJExUVFUeOHLnvvvukGKRff/31/v37pcjTwYvtKwGEkG/1BRHjj3cLzU+njLzjZ8kIobYu5/977XjvMlm6dOnf//53s9n8/PPPv/nmmzfccMPOnTujo6OhQWzZsuU3v/nNsWPHnn322YMHD952221//etfRVF89913XS7XokWLpKazePFijuM++uij4Hl6NbgpU6YUFBTU19dDoFKYDbEsu2vXLo/Hk5OTg38IaWCR1MvHH3/85MmTGOMHHngAyN+j/EVRfPzxx59++mlRFD/++ONVq1Z9/vnn69ev97oSiiK6adOmOXPmvPvuu4899lheXt66devuuOMOScibNm1yu92bNm3atm3b6NGj33jjjbFjx8InZGZmpqSkvPDCC6+88grGOLj0gtcXxjgjI2Pq1KnPPffcE088QdP03/72t4SEhN5JHhInJSWtWrVq9+7dzz//vNFofOqpp1asWAH9lHx62G2xfSWQnJzsVX2CIAQR448ivjqnYNyeH+g2SSMM6387BSHEC3jVprzeaRIY44ceeujcuXN33nknnLE/ceLE+++/f++9927atAljfPjw4c8///ztt9+GxHFxcdOmTcMYX7p06fjx47NnzwYvmhjjW265paamJjc3l6KoIHnKRxilUhkREdHY2AiHCuSKRkNDg9lsjo2NlZMcRjyv+cihQ4dycnIyMzM//fRTSSEMPX+EUG5ubkZGBkLo/Pnzn376KUVRVVVV4DIQrgATEEJhYWHyDksUxZqaGkmS6enpx48ff+GFFzDG77//fnl5eX19PRTy4Ycfrq6uvu2222w2G0Jo//79//rXvyZMmFBSUoIxttlsd9xxR0dHB7woiPQQQsHrC2NM0/Ty5cu7urowxm1tbdu3b7/lllu2bdvWC8nDxYiIiKVLl+bn52OM33jjja+++uoPf/jDzp075fUSvCEFkkBaWtq+ffvk1UdRVCAxXvfToteI6m+sy25us69//QT8q1MrXn70Zvi9Zss3VkcvD9KlpqaOGTPm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" alt="Nhóm Cycles Memory">
         <figcaption>Nhóm <b>Cycles Memory</b>, ô bỏ vật ngoài khung đang
           bật.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+
+  <section id="nha-ram">
+    <p class="nhan-nho">Mới từ bản 0.4.0 · nhóm Cycles Memory</p>
+    <h2><span class="nut">Hand Memory Back After Render</span>: trả RAM về cho
+      máy</h2>
+    <div class="doi">
+      <div>
+        <p>Render xong, Blender thường <em>giữ lại</em> phần RAM nó đã xin của
+          hệ điều hành — nhìn Task Manager thấy Blender vẫn chiếm vài GB dù
+          ảnh đã ra. Máy 16 GB mà mở thêm Photoshop hay trình duyệt là bắt đầu
+          giật. Ô này bật sẵn: <b>sau mỗi lần render</b>, phần bộ nhớ Blender
+          không còn dùng được trả về cho máy. Không có gì trong cảnh thay
+          đổi.</p>
+        <p>Render nền (<span class="num">blender -b</span>) hoặc máy đang
+          thiếu RAM thì addon thả cả bộ đệm ảnh; cần tới đâu Blender nạp lại
+          tới đó.</p>
+
+        <h3><span class="nut">Free Kept Render Data</span>: chỗ nặng nhất</h3>
+        <p>Khi bạn bật <span class="num">Persistent Data</span> của Cycles,
+          Blender giữ <b>nguyên cả cảnh render</b> trong bộ nhớ sau khi render
+          xong, để lần sau khỏi dựng lại — đo được 2,9 GB trên một cảnh nội
+          thất thật. Ô này thả phần đó ngay sau render, còn ô
+          <span class="num">Persistent Data</span> của bạn vẫn bật nguyên.</p>
+        <p><b>Cái giá:</b> lần render <em>sau</em> phải dựng lại cảnh, tức là
+          mất lại vài giây đầu. Một lượt render animation không bị ảnh hưởng —
+          các khung trong cùng một lượt vẫn dùng chung cảnh đã dựng.</p>
+        <p>Đo ngày 18/09/2026 trên cảnh phòng ngủ, Blender có mở cửa sổ,
+          Persistent Data bật: RAM sau render đi từ
+          <span class="num">4.676 MB</span> xuống
+          <span class="num">1.798 MB</span>.</p>
+
+        <h3>Mấy dòng số dưới hai ô</h3>
+        <p>Việc này chạy im lặng thì không ai biết nó có làm gì không, nên
+          addon in luôn số của <b>lần render gần nhất</b>:</p>
+        <ul>
+          <li><span class="dong">Last render: -N MB resident</span> — phần
+            Task Manager thấy Blender bớt đi.</li>
+          <li>Dòng thụt vào ngay dưới, <b>N MB actually released</b> — số byte
+            <em>thật sự</em> trả về cho máy. Trên Windows hai số này khác
+            nhau: đẩy trắng bộ nhớ làm việc có thể làm Task Manager tụt mà
+            không giải phóng byte nào, nên addon dán cả hai để bạn đọc được
+            con số thật.</li>
+          <li><b>kept render data freed</b> — lần đó có thả phần Persistent
+            Data.</li>
+          <li><b>N image buffers dropped</b> — số bộ đệm ảnh đã thả.</li>
+          <li><span class="dong">RAM free: N / N MB</span> — RAM còn trống
+            trên máy, sau cùng.</li>
+        </ul>
+        <p>Chưa render lần nào thì chỗ đó ghi
+          <span class="dong">Nothing rendered yet</span> và chỉ hiện RAM trống
+          hiện giờ.</p>
+        <div class="hop">
+          <p><b>Chỉ một addon được làm việc này một lúc.</b> Máy có cài cả
+            <b>DP-OptimizeRender bản 0.3.1 trở về trước</b> thì addon đó lo,
+            và DP_RAMchill ghi
+            <span class="dong">Done by DP_Optimize for now</span> — hai addon
+            cùng trả RAM một lúc là giẫm chân nhau. Từ DP-OptimizeRender
+            0.3.2, việc trả RAM đã chuyển hẳn sang DP_RAMchill: DP-OptimizeRender
+            không tự dọn bộ nhớ nữa, nên dòng này không hiện và DP_RAMchill tự
+            làm. Ô đang bật mà phần theo
+            dõi không chạy được thì dòng
+            <span class="dong">Hand-back is not running</span> hiện ra.</p>
+          <p><b>Render một loạt camera</b> (DP_Camera Batch Render) thì việc
+            trả RAM <b>chờ hết cả chuỗi</b> mới làm, không chen vào giữa hai
+            tấm — chen vào là camera sau phải dựng lại cảnh từ đầu.</p>
+        </div>
+      </div>
+      <figure class="anh">
+        <div class="hop">
+          <p><b>Chưa có ảnh chụp phần này.</b> Hai ô
+            <span class="nut">Hand Memory Back After Render</span> và
+            <span class="nut">Free Kept Render Data</span> nằm trong nhóm
+            <b>Cycles Memory</b>, ngay dưới khối bỏ vật ngoài khung, kèm số
+            của lần render gần nhất. Ảnh nhóm Cycles Memory ở mục
+            <a href="#ngoai-khung">Bỏ vật ngoài khung hình</a> chụp ngày
+            14/09/2026, trước khi có hai ô này. Hai bảng con
+            <b>Bake Options</b> và <b>Mesh Optimize</b> cũng chưa có ảnh
+            chụp.</p>
+        </div>
       </figure>
     </div>
   </section>
@@ -893,8 +1228,10 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
         nó.</li>
       <li><b>Chưa đo với EEVEE.</b> Addon vẫn hạ cỡ khi render EEVEE, nhưng mọi
         con số trong sổ tay đo trên Cycles.</li>
-      <li><b>Chưa chạy thử trên macOS và Linux.</b> Mọi số đo trong sổ tay làm
-        trên Windows.</li>
+      <li><b>Chưa chạy thử trên macOS.</b> Trên Linux, bộ bài đo tự động đã
+        chạy đạt trên Blender 5.2.2 ở chế độ nền (<span class="num">blender
+        -b</span>), chưa thử bằng tay có cửa sổ. Mọi số đo thời gian và bộ
+        nhớ trong sổ tay làm trên Windows.</li>
       <li><b>Trên một số bản Blender cũ</b>, ô thư mục Bake có thể tô đỏ dù
         đường dẫn đúng. Bake vẫn chạy bình thường.</li>
     </ul>
@@ -945,7 +1282,10 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
     <h3 id="cham">Render có chậm đi không?</h3>
     <p>Có. Trên cảnh thử, bản đầu tiên của addon mất khoảng 6 giây mỗi tấm để
     hạ cỡ rồi trả lại map. Chế độ Auto còn phải quét cảnh: bản hiện tại quét
-    cảnh thử mất từ 9 đến 12 giây, tuỳ máy đang bận tới đâu. Việc quét chỉ
+    cảnh thử của sổ tay này mất từ 9 đến 12 giây, tuỳ máy đang bận tới đâu.
+    Con số 6–8 giây mỗi camera ghi trong sổ tay DP-OptimizeRender đo trên một
+    cảnh khác (cảnh bếp mẫu, render hàng loạt với DP Camera), nên hai con số
+    không so thẳng với nhau được. Việc quét chỉ
     chạy lại khi cảnh hoặc góc máy đổi. Dời, ẩn hay đổi vật liệu một vật cũng
     tính là cảnh đổi. Các tấm sau cùng một cảnh, cùng một góc máy thì không
     quét nữa. Đổi lại là card đồ hoạ nhẹ đi vài trăm MB. Cảnh của bạn đang
@@ -968,6 +1308,30 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
     trong vòng giữ lại, hoặc tắt
     <span class="nut">Leave Out Off-screen Objects</span> cho cảnh này.</p>
 
+
+    <h3>Optimize Meshes có sửa model vĩnh viễn không?</h3>
+    <p>Có sửa, nhưng trả lại được. Lưới gốc nằm trong thư mục
+    <span class="num">DP_RAMchill_meshes</span> cạnh file .blend, và nút
+    <span class="nut">Restore Original Meshes</span> lấy chúng về. Đây là chỗ
+    khác hẳn phần map: map chỉ nhỏ đi trong lúc render. Yên tâm nhất thì lưu
+    một bản <span class="num">.blend</span> riêng trước khi bấm.</p>
+
+    <h3>Bake ra JPG có làm nhẹ card không?</h3>
+    <p>Không. JPG chỉ nhẹ <b>đĩa</b> và nhẹ file <span class="num">.blend</span>
+    khi map đóng gói. Vào tới bộ nhớ thì ảnh nào cũng được giải nén ra đúng số
+    pixel đó: đo trên một tấm 2K, file 7,6 MB xuống 1,4 MB mà RAM vẫn 18,1 MB
+    cả hai bên. Muốn nhẹ card thì phải <em>hạ cỡ</em> — Auto, Force, hoặc
+    <span class="nut">Bake Selected Objects</span> với
+    <span class="nut">Max Size</span> nhỏ.</p>
+
+    <h3>Bật trả RAM về máy thì lần render sau có chậm hơn không?</h3>
+    <p>Chỉ chậm khi bạn đang bật <span class="num">Persistent Data</span>: lần
+    render sau phải dựng lại cảnh. Không bật Persistent Data thì gần như không
+    khác gì, vì phần được trả về là bộ nhớ Blender đã dùng xong. Một lượt
+    render animation không bị ảnh hưởng. Muốn giữ nguyên nếp cũ thì tắt
+    <span class="nut">Free Kept Render Data</span> và để
+    <span class="nut">Hand Memory Back After Render</span> bật.</p>
+
     <h3>Dùng với EEVEE được không?</h3>
     <p>Addon vẫn đo và hạ cỡ như thường. Nhưng mọi con số trong sổ tay này đo
     trên Cycles, nên với EEVEE bạn nên tự bấm
@@ -975,7 +1339,7 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
   </section>
 
   <footer>
-    <p><b>DP_RAMchill</b> 0.3.4 — Ducphan. Addon miễn phí, chia sẻ rộng rãi,
+    <p><b>DP_RAMchill</b> 0.4.0 — Ducphan. Addon miễn phí, chia sẻ rộng rãi,
     không cần mã kích hoạt.</p>
     <p>Ảnh trong sổ tay là ảnh chụp bảng thật của addon trên Blender 5.2, không
     phải hình vẽ minh hoạ. Hai tấm render so sánh là cùng một cảnh nội thất
