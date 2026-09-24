@@ -148,6 +148,8 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
     <div><b>0</b><span>lần mất công sửa lại bên Blender</span></div>
     <div><b>3</b><span>hệ máy: Windows · macOS · Linux</span></div>
   </div>
+  <p class="dat" style="font-size:15px">Sổ tay cho bản <b>3.8.2</b>, cả nửa
+  Blender lẫn nửa SketchUp.</p>
 
   <div class="canh-dau">
     <div class="dau">Hai nửa,<br>nhớ cả hai</div>
@@ -164,6 +166,33 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
     </div>
   </div>
 </header>
+
+<!-- ============================================================ cai dat -->
+<section>
+  <p class="nhan-nho">Cài đặt</p>
+  <h2>Cài hai nửa: Blender qua DP_Hub, SketchUp bằng file .rbz</h2>
+  <ol class="buoc">
+    <li><b>Nửa Blender cài qua DP_Hub.</b> Mở DP_Hub trong Blender, dán mã
+    kích hoạt của DP_SU Sync vào Hub. Hub tự tải và cài addon, bạn không
+    phải cầm file zip nào.</li>
+    <li><b>Nửa SketchUp lấy từ chính khối DP_SU Sync trong DP_Hub</b>: bấm
+    nút tải phụ <b>SketchUp extension (.rbz)</b>. File <b>.rbz</b> được lưu
+    vào thư mục Downloads và Hub mở sẵn thư mục đó cho bạn.</li>
+    <li>Sang SketchUp, vào <b>Extensions ▸ Extension Manager ▸ Install
+    Extension</b>, chọn file <b>.rbz</b> vừa tải.</li>
+    <li><b>Thoát hẳn SketchUp rồi mở lại.</b> Thanh công cụ
+    <b>SU2Blender Live</b> hiện ra với hai nút <b>Sync All</b> và
+    <b>Sync Selected</b>.</li>
+  </ol>
+  <div class="hop">
+    <p>Tab <b>SU Sync</b> hiện hộp <b>NOT ACTIVATED</b> hay
+    <b>KEY EXPIRED</b> thay cho các khối bên dưới nghĩa là máy này chưa có mã
+    dùng được. Đường gỡ nằm ngay trong hộp đó: bấm
+    <b>Copy machine code</b> rồi gửi cho tác giả, nhận mã
+    về thì bấm <b>Paste activation key</b>. Hộp này là
+    chỗ gỡ, không phải addon hỏng.</p>
+  </div>
+</section>
 
 <!-- ============================================================ o dau -->
 <section>
@@ -266,6 +295,9 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
       <p><span class="nut">Import SketchUp (.skp)</span> đọc thẳng file
       <b>.skp</b>, <b>không cần SketchUp có mặt trên máy</b>. Nhận file khách
       gửi qua mà máy chỉ có Blender thì đi đường này.</p>
+      <p>Cùng lệnh đó còn nằm trong menu <b>File ▸ Import ▸</b>
+      <span class="nut">SketchUp (.skp)</span>, cạnh các định dạng nhập khác
+      của Blender.</p>
       <p><b>Mở lại cùng một file là cập nhật nó</b>, không phải nhân đôi model
       lên. Khách gửi bản sửa thì cứ mở đè lên bản cũ.</p>
       <div class="hop">
@@ -297,9 +329,9 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
           <tr><td>Real size (1 unit = 1 m)</td><td><b>Mặc định.</b> Đúng quy
           ước của chính Blender: vật 1 m trong SketchUp thành 1 unit. Không
           phải cài đặt gì.</td></tr>
-          <tr><td>1 unit = 1 mm (×1000)</td><td>Chỉ khi file <b>.blend</b>
+          <tr><td>1 unit = 1 mm&nbsp; (x1000)</td><td>Chỉ khi file <b>.blend</b>
           đang mở vốn đã dựng theo quy ước 1 unit = 1 mm.</td></tr>
-          <tr><td>1 unit = 1 cm (×100)</td><td>Tương tự, cho file theo quy ước
+          <tr><td>1 unit = 1 cm&nbsp; (x100)</td><td>Tương tự, cho file theo quy ước
           cm.</td></tr>
           <tr><td>Auto (from Scene Unit Scale)</td><td>Chỉ cho file thật sự có
           đặt Unit Scale khác 1.0.</td></tr>
@@ -312,6 +344,14 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
         <p>Bảng bật cảnh báo đỏ <span class="nut">Scale unknown!</span> khi
         file để Unit Scale = 1.0 mà đơn vị hiển thị lại là mm hoặc cm. Lúc đó
         không cách nào đoán đúng nên nó bắt bạn chọn, thay vì đoán hộ.</p>
+      </div>
+      <div class="hop">
+        <p>Cảnh báo đỏ thứ hai, <span class="nut">Scale conflict!</span>, bật
+        khi bạn đã chọn tay một tỉ lệ (m, cm hoặc mm) mà file lại đặt Unit
+        Scale một con số khác 1.0 và không khớp với lựa chọn đó. Dòng ngay dưới nói file đang khai gì, ví dụ
+        <b>Scene Unit Scale = 0.01 (1 unit = 0.01 m)</b>. Chọn lại ô
+        <span class="nut">Import Scale</span> cho khớp với quy ước thật của
+        file.</p>
       </div>
     </div>
     <figure class="anh">
@@ -359,8 +399,16 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
       <p>Khối này <b>không có nút nào</b>, vì chuyện đồ ẩn do <b>nửa
       SketchUp</b> quyết định. Lúc bấm Sync, SketchUp hỏi bạn có muốn gửi kèm
       đồ đang ẩn không, bạn trả lời ở đó chứ không phải ở đây. Lỡ tích
-      <i>"Remember my choice"</i> rồi mà muốn đổi ý thì vào
-      <b>Plugins ▸ SU2Blender Sync Options…</b> bên SketchUp.</p>
+      <i>"Remember my choice"</i> rồi mà muốn đổi ý thì vào menu
+      <b>Extensions ▸</b> <span class="nut">SU2Blender Sync Options...</span>
+      bên SketchUp.</p>
+      <p><b>Trả lời không gửi đồ ẩn thì bên Blender đồ đó bị giấu, không bị
+      xoá.</b> Object cũ được tắt con mắt trong Outliner, vật liệu, modifier và
+      công bạn làm trên nó vẫn còn; bật lại bên SketchUp rồi Sync là nó hiện
+      lại.</p>
+      <p>Đồ <b>chưa gán tag</b> nằm ở gốc model vào collection
+      <b>"Layer0"</b>. Đồ chưa gán tag nằm trong một group có tag thì đi theo
+      tag của group đó, y như cách SketchUp ẩn hiện nó.</p>
     </div>
     <figure class="anh">
       <img src="data:image/png;base64,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" alt="Khối Tags">
@@ -382,7 +430,7 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
       thay phần hình học đã đổi.</p>
       <p><span class="nut">Rebuild from Scratch</span> đi đường ngược lại:
       <b>vứt hết</b> rồi dựng lại từ đầu. Bảng nói thẳng câu đó ngay trên nút,
-      <i>"Sync keeps your edits. This throws them away."</i></p>
+      <i>"Sync keeps your edits."</i> rồi <i>"This throws them away:"</i>.</p>
       <div class="hop">
         <p>Chỉ dùng khi model bên Blender đã rối tới mức không cứu được, hoặc
         khi bạn muốn chắc chắn không còn sót gì của bản cũ.</p>
@@ -393,6 +441,28 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
       <figcaption>Khối <b>Rebuild</b>.</figcaption>
     </figure>
   </div>
+</section>
+
+<!-- ========================================================= vat lieu -->
+<section>
+  <p class="nhan-nho">Vật liệu</p>
+  <h2>Vật liệu kính: cụm node của bạn không bị cắm lại</h2>
+
+      <p>Vật liệu có <b>opacity</b> bên SketchUp sang Blender được dựng thành
+      một cụm node kính. Trước đây mỗi lần Sync, addon <b>cắm lại</b> cụm đó
+      vô điều kiện: bạn gỡ ra cắm thẳng Principled vào Output, hay cắm hẳn
+      shader kính của riêng mình, Sync một cái là mất.</p>
+      <p>Nay addon dựng cụm kính <b>đúng một lần</b>. Lần Sync sau, thấy cụm
+      node đã khác hình nó dựng ra thì nó <b>để yên</b>. Chiều ngược lại cũng
+      đã có: bên SketchUp bỏ opacity đi (đổi ô kính thành tường) thì bên
+      Blender cụm kính được tháo, vật liệu hết trong suốt — trước đây dựng ra
+      rồi không có đường nào tháo, ô kính đã đổi thành tường vẫn trong suốt
+      mãi. Addon chỉ tháo khi cụm node <b>còn nguyên hình nó dựng ra</b>; node
+      nào bạn đã nối sang chỗ khác thì vẫn được giữ.</p>
+  <h3>Ảnh vật liệu nằm luôn trong file .blend</h3>
+  <p>Ảnh map của vật liệu SketchUp được <b>nhúng vào file .blend</b>, không
+  trỏ ra thư mục tạm nữa. Sync Selected một phần model không làm vật liệu ở
+  phần còn lại mất ảnh, và file .blend mang sang máy khác vẫn đủ ảnh.</p>
 </section>
 
 <!-- =========================================================== muot -->
@@ -469,6 +539,18 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
   <h3>Mặt phẳng toàn tam giác, chọn mãi không được?</h3>
   <p>Bấm <span class="nut">Optimize Mesh</span> sau khi nhập.</p>
 
+  <h3>Vật liệu hiện màu tím?</h3>
+  <p>Đó là ảnh map từ một lần Sync bằng bản cũ (3.7.0 trở về trước), hồi ảnh
+  còn trỏ ra thư mục tạm và thư mục đó đã bị xoá. Cửa sổ System Console của
+  Blender nói thẳng cách chữa: <i>"Press 'Sync All' in SketchUp once"</i>.
+  Bấm <b>Sync All</b> bên SketchUp một lần, ảnh được nhúng vào file
+  <b>.blend</b> và không bị lại nữa.</p>
+
+  <h3>Tab SU Sync chỉ hiện hộp NOT ACTIVATED hoặc KEY EXPIRED?</h3>
+  <p>Máy này chưa có mã dùng được, hoặc mã đã hết hạn. Gỡ ngay trong hộp đó:
+  <b>Copy machine code</b>, gửi cho tác giả, rồi
+  <b>Paste activation key</b> khi nhận mã mới.</p>
+
   <h3>Máy không cài SketchUp thì dùng được không?</h3>
   <p>Được, phần mở file vẫn chạy:
   <span class="nut">Import SketchUp (.skp)</span>. Chỉ mất đường Sync trực
@@ -476,8 +558,8 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--ke);
 </section>
 
 <footer>
-  <p><b>DP_SU to Blender Sync</b> — Ducphan. Cần mã kích hoạt; liên hệ tác
-  giả trên Telegram.</p>
+  <p><b>DP_SU to Blender Sync</b> 3.8.2 — Ducphan. Mua và kích hoạt qua
+  DP_Hub; liên hệ tác giả trên Telegram.</p>
   <p>Ảnh trong sổ tay là ảnh chụp bảng thật của addon trên Blender 5.2, không
   phải hình vẽ minh hoạ. Model trong ảnh cũng là một file <b>.skp</b> thật,
   mở bằng chính nút của addon.</p>
