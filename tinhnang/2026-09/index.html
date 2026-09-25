@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DP Addons — Có gì mới</title>
+<meta name="description" content="Những tính năng mới của bộ addon Blender nhà DP — đợt cập nhật tháng 9/2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0f1a; --bg2:#111726; --card:#151c2e; --line:#243049;
+  --tx:#e8edf7; --mo:#9aa6bf; --mo2:#6f7b94;
+  --a1:#ff8a3d; --a2:#ffd166; --a3:#4cc9f0; --a4:#7b61ff; --a5:#2ee6a6; --a6:#ff5d8f;
+  --r:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font-family:"Be Vietnam Pro",system-ui,sans-serif;line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+code,.k{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.86em;background:#1f2940;border:1px solid #2c3a5a;border-radius:6px;padding:1px 6px;color:#ffd9b8;white-space:nowrap}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:min(88vh,780px);display:flex;align-items:center;justify-content:center;text-align:center;padding:90px 16px 70px;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;animation:troi 18s ease-in-out infinite alternate}
+.b1{width:520px;height:520px;background:var(--a1);top:-160px;left:-120px}
+.b2{width:460px;height:460px;background:var(--a4);bottom:-160px;right:-100px;animation-delay:-6s}
+.b3{width:340px;height:340px;background:var(--a3);top:30%;left:55%;animation-delay:-11s;opacity:.35}
+@keyframes troi{to{transform:translate(60px,40px) scale(1.15)}}
+.luoi{position:absolute;inset:0;background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:44px 44px;mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%)}
+.hero-in{position:relative;max-width:900px}
+.nhan{display:inline-block;padding:6px 16px;border-radius:99px;background:#ffffff12;border:1px solid #ffffff22;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;color:var(--a2);margin-bottom:22px;backdrop-filter:blur(6px)}
+h1{font-size:clamp(2.3rem,7vw,4.6rem);line-height:1.08;font-weight:800;letter-spacing:-.02em}
+h1 .gr{background:linear-gradient(90deg,var(--a1),var(--a2),var(--a3),var(--a4),var(--a1));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:chay 8s linear infinite}
+@keyframes chay{to{background-position:300% 0}}
+.hero p.dan{margin:22px auto 0;max-width:640px;color:var(--mo);font-size:1.12rem}
+.so-lieu{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:40px}
+.so{background:#ffffff0d;border:1px solid #ffffff1c;border-radius:16px;padding:16px 22px;min-width:150px;backdrop-filter:blur(8px)}
+.so b{display:block;font-size:2rem;font-weight:800;color:#fff}
+.so span{font-size:.85rem;color:var(--mo)}
+.cuon{margin-top:46px;font-size:.85rem;color:var(--mo2);animation:nhun 2s ease-in-out infinite}
+@keyframes nhun{50%{transform:translateY(8px)}}
+
+/* ---------- NAV ---------- */
+nav{position:sticky;top:0;z-index:20;background:#0b0f1acc;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .in{max-width:1180px;margin:0 auto;display:flex;gap:8px;overflow-x:auto;padding:10px 16px;scrollbar-width:none}
+nav .in::-webkit-scrollbar{display:none}
+nav a{flex:none;text-decoration:none;font-size:.88rem;font-weight:600;padding:7px 14px;border-radius:99px;border:1px solid var(--line);color:var(--mo);transition:.2s}
+nav a:hover,nav a.on{color:#fff;border-color:var(--c,var(--a1));background:color-mix(in srgb,var(--c,var(--a1)) 22%,transparent)}
+
+/* ---------- SECTIONS ---------- */
+main{max-width:1180px;margin:0 auto;padding:30px 16px 60px}
+.addon{--c:var(--a1);position:relative;margin:70px 0;scroll-margin-top:70px}
+.dau{display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-bottom:26px}
+.icon{width:64px;height:64px;border-radius:18px;display:grid;place-items:center;font-size:30px;background:linear-gradient(135deg,var(--c),color-mix(in srgb,var(--c) 40%,#000));box-shadow:0 10px 40px -8px var(--c)}
+.dau h2{font-size:clamp(1.6rem,4vw,2.3rem);font-weight:800;line-height:1.1}
+.ver{display:inline-flex;align-items:center;gap:8px;margin-top:6px;font-size:.92rem;color:var(--mo)}
+.ver .cu{text-decoration:line-through;opacity:.7}
+.ver .moi{color:#fff;font-weight:700;background:color-mix(in srgb,var(--c) 30%,transparent);border:1px solid var(--c);border-radius:8px;padding:1px 9px}
+.tom{color:var(--mo);max-width:760px;margin-bottom:24px;font-size:1.04rem}
+.luoi-the{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px}
+.the{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px 22px 20px;overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s}
+.the::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:linear-gradient(90deg,var(--c),transparent)}
+.the:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--c) 60%,var(--line));box-shadow:0 18px 50px -20px var(--c)}
+.the h3{font-size:1.08rem;font-weight:700;margin-bottom:8px;display:flex;gap:10px;align-items:flex-start}
+.the h3 i{font-style:normal;flex:none}
+.the p{color:var(--mo);font-size:.95rem}
+.the ul{margin:8px 0 0 18px;color:var(--mo);font-size:.93rem}
+.the li{margin:3px 0}
+.the.lon{grid-column:1/-1;background:linear-gradient(135deg,color-mix(in srgb,var(--c) 16%,var(--card)),var(--card))}
+.moi-tag{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.06em;color:#111;background:var(--c);border-radius:6px;padding:1px 7px;margin-left:6px;vertical-align:2px}
+
+/* before/after bars */
+.do{margin-top:14px}
+.hang{display:grid;grid-template-columns:62px 1fr auto;gap:10px;align-items:center;font-size:.82rem;color:var(--mo);margin:6px 0}
+.thanh{height:10px;border-radius:99px;background:#ffffff10;overflow:hidden}
+.thanh b{display:block;height:100%;width:0;border-radius:99px;transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+.hang.truoc b{background:#5a6580}
+.hang.sau b{background:linear-gradient(90deg,var(--c),var(--a2))}
+.hang em{font-style:normal;font-weight:700;color:#fff;min-width:70px;text-align:right}
+.loi{display:inline-block;margin-top:10px;font-weight:800;font-size:1.5rem;color:var(--c)}
+
+/* reveal */
+.hien{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.hien.ra{opacity:1;transform:none}
+
+/* DP window mock */
+.mock{position:relative;height:250px;border-radius:14px;background:#0e1422;border:1px solid var(--line);margin-top:16px;overflow:hidden}
+.mock .tb{height:26px;background:#19223a;display:flex;align-items:center;gap:6px;padding:0 10px;font-size:.72rem;color:var(--mo)}
+.mock .tb s{width:9px;height:9px;border-radius:50%;background:#ff5f57;text-decoration:none}
+.mock .tb s:nth-child(2){background:#febc2e}.mock .tb s:nth-child(3){background:#28c840;margin-right:8px}
+.o{position:absolute;width:150px;border-radius:9px;background:#1a2338;border:1px solid #2e3b5d;box-shadow:0 10px 30px -10px #000;font-size:.68rem;color:var(--mo);animation:bay 7s ease-in-out infinite alternate}
+.o .t{background:var(--oc);color:#111;font-weight:700;padding:4px 8px;border-radius:8px 8px 0 0}
+.o .d{height:7px;border-radius:4px;background:#ffffff14;margin:7px 8px}
+.o .d.x{width:60%}
+@keyframes bay{to{transform:translate(var(--dx),var(--dy))}}
+
+/* footer */
+.chan{margin-top:80px;text-align:center;padding:50px 16px;border-top:1px solid var(--line);color:var(--mo)}
+.chan .nut{display:inline-block;margin-top:18px;padding:12px 26px;border-radius:99px;background:linear-gradient(90deg,var(--a1),var(--a6));color:#fff;font-weight:700;text-decoration:none;box-shadow:0 10px 30px -10px var(--a1)}
+.chan small{display:block;margin-top:22px;color:var(--mo2);font-size:.8rem}
+@media (max-width:560px){.so{min-width:130px;padding:12px 14px}.so b{font-size:1.6rem}.hang{grid-template-columns:52px 1fr auto}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hien{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <div class="luoi"></div>
+  <div class="hero-in">
+    <span class="nhan">Cập nhật tháng 9 · 2026</span>
+    <h1>Bộ addon DP<br><span class="gr">có gì mới?</span></h1>
+    <p class="dan">Cửa sổ DP kéo ra ngoài Blender, render hàng loạt qua DP VFB, kính không còn hoá gương, lệnh Mirror cho DP_Sketch… Mở DP_Hub, bấm <b>Update</b> là có hết.</p>
+    <div class="so-lieu">
+      <div class="so"><b data-dem="8">8</b><span>addon được nâng cấp</span></div>
+      <div class="so"><b data-dem="48" data-hau="×">48×</b><span>Light Mix vẽ nhanh hơn</span></div>
+      <div class="so"><b data-dem="27">27</b><span>camera batch, 0 lần sập</span></div>
+      <div class="so"><b data-dem="36">36</b><span>lệnh trong DP_Sketch</span></div>
+    </div>
+    <div class="cuon">▼ cuộn xuống xem từng addon</div>
+  </div>
+</header>
+
+<nav><div class="in">
+  <a href="#hub" style="--c:var(--a4)">DP_Hub</a>
+  <a href="#max" style="--c:var(--a3)">MaxImporter</a>
+  <a href="#light" style="--c:var(--a2)">Lighting</a>
+  <a href="#cam" style="--c:var(--a1)">Camera</a>
+  <a href="#matpro" style="--c:var(--a5)">MatPro</a>
+  <a href="#sketch" style="--c:var(--a6)">Sketch</a>
+  <a href="#opt" style="--c:#39d0ff">OptimizeRender</a>
+  <a href="#ram" style="--c:#b5f24a">RAMchill</a>
+</div></nav>
+
+<main>
+
+<!-- ================= HUB ================= -->
+<section class="addon" id="hub" style="--c:var(--a4)">
+  <div class="dau hien">
+    <div class="icon">🪟</div>
+    <div><h2>DP_Hub — Cửa sổ DP</h2>
+      <div class="ver"><span class="cu">1.6</span>→<span class="moi">1.7.1</span></div></div>
+  </div>
+  <p class="tom hien">Mọi addon bạn đã mua gom về <b>một cửa sổ riêng</b>, kéo ra ngoài khung Blender hoặc sang màn hình thứ hai. Mỗi addon là một ô, bên trong giống hệt panel N của addon đó.</p>
+  <div class="luoi-the">
+    <div class="the lon hien">
+      <h3><i>✨</i>Mở cửa sổ DP <span class="moi-tag">MỚI</span></h3>
+      <p>Panel N → tab <b>DP</b> → khối <code>DP window</code> → bấm <code>Open DP window</code>. Tích tên addon ngay bên dưới để bật ô của addon đó, hoặc chuột phải vào chỗ trống trong cửa sổ. Bật nhiều ô cùng lúc được. Nút bấm trong ô tác động thẳng vào viewport chính.</p>
+      <div class="mock" aria-hidden="true">
+        <div class="tb"><s></s><s></s><s></s>DP window</div>
+        <div class="o" style="--oc:var(--a2);left:4%;top:40px;--dx:14px;--dy:8px"><div class="t">DP_Lighting</div><div class="d"></div><div class="d x"></div><div class="d"></div><div class="d x"></div></div>
+        <div class="o" style="--oc:var(--a1);left:36%;top:52px;--dx:-10px;--dy:14px;animation-delay:-2s"><div class="t">DP_Camera</div><div class="d x"></div><div class="d"></div><div class="d"></div><div class="d x"></div><div class="d"></div></div>
+        <div class="o" style="--oc:var(--a5);left:68%;top:36px;--dx:-16px;--dy:10px;animation-delay:-4s"><div class="t">DP_MatPro</div><div class="d"></div><div class="d"></div><div class="d x"></div></div>
+      </div>
+    </div>
+    <div class="the hien"><h3><i>🖱️</i>Dùng y như panel N</h3>
+      <p>Kéo số đúng kiểu Blender, gõ được <code>2m</code>, <code>45°</code>. Chuột phải lên giá trị có <code>Reset to Default Value</code>, <code>Copy Value</code>, <code>Paste Value</code>, <code>Insert Keyframe</code>… Mỗi thay đổi là một bước <b>Ctrl+Z</b>.</p></div>
+    <div class="the hien"><h3><i>🎨</i>Bảng chọn màu đầy đủ</h3>
+      <p>Ba thẻ RGB / HSV / HSL và ô Hex. Màu hiện khớp với panel N.</p></div>
+    <div class="the hien"><h3><i>🖼️</i>Preview vật liệu ngay trong ô</h3>
+      <p>Ảnh vật liệu và map hiện ngay. Đo thử: 10 vật liệu có đủ ảnh sau 6–10 giây.</p></div>
+    <div class="the hien"><h3><i>🪶</i>Nhẹ máy</h3>
+      <p>Để yên thì không vẽ lại lần nào. Mở 8 ô vẫn kéo mượt 60 khung/giây.</p>
+      <div class="do">
+        <div class="hang truoc"><span>Trước</span><div class="thanh"><b data-w="100"></b></div><em>10,7 ms</em></div>
+        <div class="hang sau"><span>Nay</span><div class="thanh"><b data-w="64"></b></div><em>6,8 ms</em></div>
+      </div></div>
+    <div class="the hien"><h3><i>🛟</i>Panel N cũ vẫn còn</h3>
+      <p>Không quen cửa sổ mới thì cứ dùng panel N như trước. Các ô mở ra ghim sát mép trên, bố cục được nhớ cho lần sau.</p></div>
+  </div>
+</section>
+
+<!-- ================= MAX ================= -->
+<section class="addon" id="max" style="--c:var(--a3)">
+  <div class="dau hien">
+    <div class="icon">📦</div>
+    <div><h2>DP_MaxImporter</h2>
+      <div class="ver"><span class="cu">4.18.14</span>→<span class="moi">4.18.15</span></div></div>
+  </div>
+  <p class="tom hien">Nhập file .max chuẩn hơn: kính, bump, UV và đơn vị đều được sửa tận gốc.</p>
+  <div class="luoi-the">
+    <div class="the hien"><h3><i>🪟</i>Kính xiên không còn hoá gương</h3>
+      <p>Addon tự lật lại pháp tuyến của lưới kính bị ngược ngay sau khi nhập. File bếp thử: 13 trên 139 vật kính được sửa tự động.</p></div>
+    <div class="the hien"><h3><i>🗺️</i>Bảng UVW làm lại hẳn <span class="moi-tag">MỚI</span></h3>
+      <p>Mỗi map một khối gập riêng: <code>UV</code>/<code>Box</code>, <code>Channel</code>, Tiling/Offset/Rotate, và nút <code>Copy to all maps</code>. Lưới không có UV thì bảng nhắc <code>Mesh has no UV - use Box</code>.</p></div>
+    <div class="the hien"><h3><i>⛰️</i>Bump/Normal có tác dụng thật</h3>
+      <p>Thẻ Bump/Normal chỉnh thẳng <code>Strength</code> của node đang chạy. File làm bằng bản cũ sẽ báo <code>Old bump wiring - no effect</code> kèm nút <code>Fix</code>.</p></div>
+    <div class="the hien"><h3><i>📏</i>Bán kính AO đúng đơn vị</h3>
+      <p>Bán kính 100 trong file đơn vị mm nay ra 0,1 m, không còn thành 100 m.</p></div>
+    <div class="the hien"><h3><i>🎚️</i>Kéo số mịn</h3>
+      <p>Distance, Radius, IOR, Strength trước nhảy hàng chục mm mỗi điểm ảnh chuột, nay kéo mịn. Radius của <code>Round Edges</code> hiện luôn đơn vị.</p></div>
+    <div class="the hien"><h3><i>🧵</i><code>Make seamless</code> nhận map 8K</h3>
+      <p>Lên tới 8192×8192 (trước khoảng 4K), tốn RAM ít hơn chừng <b>8 lần</b>, xong việc tự nhả bộ nhớ.</p></div>
+  </div>
+</section>
+
+<!-- ================= LIGHT ================= -->
+<section class="addon" id="light" style="--c:var(--a2)">
+  <div class="dau hien">
+    <div class="icon">💡</div>
+    <div><h2>DP_Lighting Setup</h2>
+      <div class="ver"><span class="cu">1.7.1</span>→<span class="moi">1.7.2</span></div></div>
+  </div>
+  <p class="tom hien">Đèn hắt tủ thông minh hơn, bảng Light Mix nhanh vượt trội.</p>
+  <div class="luoi-the">
+    <div class="the hien"><h3><i>🧭</i>Đèn hắt tủ cùng một hướng</h3>
+      <p>Chọn nhiều tấm cùng lúc, mọi đèn quay theo hướng dài nhất của cả cụm, không còn mỗi đèn một ngả. Hộp thoại <code>Cabinet Strip (Area)</code> có thêm hai ô: <code>Same direction for all</code> và <code>Rotate 90 degrees</code>.</p></div>
+    <div class="the hien"><h3><i>⚡</i>Light Mix nhanh ~48 lần</h3>
+      <p>Cảnh 595 vật, 126 vật liệu, 35 đèn:</p>
+      <div class="do">
+        <div class="hang truoc"><span>Trước</span><div class="thanh"><b data-w="100"></b></div><em>28,7 ms</em></div>
+        <div class="hang sau"><span>Nay</span><div class="thanh"><b data-w="2.5"></b></div><em>0,6 ms</em></div>
+      </div></div>
+    <div class="the hien"><h3><i>🔔</i>Báo ngay khi chưa chọn gì</h3>
+      <p>Bấm Downlight, đèn hắt tủ hay đèn bàn mà chưa chọn vật thể thì hiện <b>No object selected!</b> ngay, không bung hộp thoại vô ích. Thêm Ctrl+Z cho 6 lệnh (chọn đèn theo nhóm, dựng World, nạp HDRI…).</p></div>
+    <div class="the hien"><h3><i>🛠️</i>Sửa lỗi</h3>
+      <ul>
+        <li>Nạp lại cùng một HDRI không còn đẻ ảnh <code>.001</code>.</li>
+        <li>Tạo Sky Sun lần hai dùng lại đèn <code>Sky_Sun</code> có sẵn; xoá thì dọn sạch dữ liệu đèn.</li>
+        <li>Ba nút chọn chạy đúng cả khi đang ở Edit Mode.</li>
+      </ul></div>
+  </div>
+</section>
+
+<!-- ================= CAM ================= -->
+<section class="addon" id="cam" style="--c:var(--a1)">
+  <div class="dau hien">
+    <div class="icon">🎥</div>
+    <div><h2>DP_Camera Setup &amp; Batch Render</h2>
+      <div class="ver"><span class="cu">1.9.1</span>→<span class="moi">1.9.2</span></div></div>
+  </div>
+  <p class="tom hien">Render hàng loạt ổn định, ra ảnh đẹp ngay qua DP VFB.</p>
+  <div class="luoi-the">
+    <div class="the lon hien"><h3><i>🖥️</i>Batch render qua DP VFB <span class="moi-tag">MỚI</span></h3>
+      <p>Máy có DP-OptimizeRender thì khối batch có thêm ô <code>Use DP VFB</code>. Mỗi camera đi qua cửa sổ DP VFB, tự chạy Glass Boost khi cảnh có kính, và file lưu ra đúng tấm bạn thấy. Batch cùng RAMchill Auto và Glass Boost: <b>27 camera, 0 lần sập</b>.</p></div>
+    <div class="the hien"><h3><i>🎛️</i>Chỉnh EV / White Balance lúc đang batch</h3>
+      <p>Không làm đổi màu tấm đang render. Giá trị vẫn lưu vào camera và áp lại khi xong loạt.</p></div>
+    <div class="the hien"><h3><i>⏹️</i>Huỷ là dừng hẳn</h3>
+      <p>Huỷ Glass Boost giữa chừng là dừng cả batch. Mở file khác giữa batch không còn làm addon kẹt ở trạng thái "đang render".</p></div>
+  </div>
+</section>
+
+<!-- ================= MATPRO ================= -->
+<section class="addon" id="matpro" style="--c:var(--a5)">
+  <div class="dau hien">
+    <div class="icon">🪵</div>
+    <div><h2>DP_MatPro</h2>
+      <div class="ver"><span class="cu">0.7.0</span>→<span class="moi">0.7.1</span></div></div>
+  </div>
+  <p class="tom hien">Map của model được giữ lại, bump tính bằng độ sâu thật.</p>
+  <div class="luoi-the">
+    <div class="the hien"><h3><i>🧷</i>Đổi preset không mất map</h3>
+      <p>Map diffuse của model ở lại và nhận thông số mới. Muốn bỏ thì bấm nút mới <code>Drop model map</code> ở bảng <code>Image maps</code>. Hai vật dùng chung vật liệu vẫn giữ ảnh riêng của mình.</p></div>
+    <div class="the hien"><h3><i>🧩</i>Cả 9 slot map đều có tác dụng</h3>
+      <p>Gloss, Metal, Normal, AO, Alpha, Emit, ARM… Thanh mới <code>Map amount</code> (dưới <code>Load maps</code>) trộn giữa map và thanh trượt.</p></div>
+    <div class="the hien"><h3><i>⛰️</i><code>Bump depth (mm)</code></h3>
+      <p>Có map Bump thì ô đổi sang độ sâu thật bằng mm. Vân nổi thấy rõ cả khi nhìn thẳng.</p></div>
+    <div class="the hien"><h3><i>⚠️</i>Xoá UV có cảnh báo</h3>
+      <p>Ô <code>Delete object's original UVs</code> nằm ngay dưới nút Apply, kèm dòng báo trước số UV sẽ bị xoá.</p></div>
+    <div class="the hien"><h3><i>📐</i>Mặc định <code>Metres</code></h3>
+      <p>File mới dùng <code>Scene units</code> = <code>Metres</code>; file cũ tự giữ Millimetres, kích thước không lệch.</p></div>
+    <div class="the hien"><h3><i>🔒</i>Không chỉnh nhầm vật liệu lạ</h3>
+      <p>Chọn vật có vật liệu không làm bằng MatPro thì các thông số mờ xám, không lỡ tay sửa được.</p></div>
+  </div>
+</section>
+
+<!-- ================= SKETCH ================= -->
+<section class="addon" id="sketch" style="--c:var(--a6)">
+  <div class="dau hien">
+    <div class="icon">✏️</div>
+    <div><h2>DP_Sketch</h2>
+      <div class="ver"><span class="cu">2.2.5</span>→<span class="moi">2.2.6</span></div></div>
+  </div>
+  <p class="tom hien">36 lệnh vẽ CAD ngay trong Blender, nay có Mirror, Empty nhanh và mang phím tắt theo người.</p>
+  <div class="luoi-the">
+    <div class="the hien"><h3><i>🪞</i>Lệnh <code>Mirror</code> <span class="moi-tag">MỚI</span></h3>
+      <p>Lật ra bản đối xứng dùng chung mesh: sửa một bên, bên kia đổi theo. Không chọn gì thì lật cả collection.</p></div>
+    <div class="the hien"><h3><i>🎯</i><code>Quick Empty &amp; Parent</code> <span class="moi-tag">MỚI</span></h3>
+      <p>Empty 80×80 mm mọc giữa nhóm và làm parent. Kèm <code>Select Parent &amp; Children</code>; cả hai có ở cuối menu Ctrl+P.</p></div>
+    <div class="the hien"><h3><i>⌨️</i>Mang phím tắt sang máy khác</h3>
+      <p><code>Save Shortcuts</code> / <code>Load Shortcuts</code> lưu bộ phím tắt ra file .json.</p></div>
+    <div class="the hien"><h3><i>〰️</i>Sweep Profile thông minh hơn</h3>
+      <ul>
+        <li>Đang trong lệnh, bấm P rồi click cây phào đã vẽ để hút lại toàn bộ thông số.</li>
+        <li>Ctrl+lăn chuột xoay phào, lăn thường để zoom.</li>
+        <li><code>Place Texture</code> có trong menu chuột phải của Smart UV.</li>
+      </ul></div>
+    <div class="the hien"><h3><i>🧬</i>Nhân bản ra instance</h3>
+      <p>Move/Rotate có <code>Copy as Instance</code> bật sẵn; bản sao nằm cùng collection với bản gốc.</p></div>
+    <div class="the hien"><h3><i>🛠️</i>Sửa lỗi</h3>
+      <ul>
+        <li>Extrude ở mép tường không để lại nét thừa.</li>
+        <li>Rời workspace DP_Sketch là về đúng workspace trước đó.</li>
+        <li>Đóng cửa sổ Sweep ngay sau khi mở không còn làm Blender văng.</li>
+      </ul></div>
+  </div>
+</section>
+
+<!-- ================= OPT ================= -->
+<section class="addon" id="opt" style="--c:#39d0ff">
+  <div class="dau hien">
+    <div class="icon">🚀</div>
+    <div><h2>DP-OptimizeRender <span style="font-size:.55em;color:var(--mo)">· tặng kèm</span></h2>
+      <div class="ver"><span class="cu">0.3.1</span>→<span class="moi">0.3.2</span></div></div>
+  </div>
+  <p class="tom hien">Cửa sổ render riêng DP VFB, và render nhanh hơn gấp nhiều lần.</p>
+  <div class="luoi-the">
+    <div class="the lon hien"><h3><i>🖥️</i>DP VFB — cửa sổ render riêng <span class="moi-tag">MỚI</span></h3>
+      <p>Ảnh hiện dần trong lúc render, màu khớp ảnh render của Blender. <code>Quick adjustments</code> chỉnh nhanh mà không phải render lại. Menu Render có thêm <code>Open DP VFB</code>.</p></div>
+    <div class="the hien"><h3><i>⏱️</i><code>Optimize This Scene</code></h3>
+      <p>Cảnh thử, một khung hình:</p>
+      <div class="do">
+        <div class="hang truoc"><span>Trước</span><div class="thanh"><b data-w="100"></b></div><em>273,6 s</em></div>
+        <div class="hang sau"><span>Nay</span><div class="thanh"><b data-w="8"></b></div><em>22,0 s</em></div>
+      </div></div>
+    <div class="the hien"><h3><i>🔷</i>Glass Boost nhanh hơn 32%</h3>
+      <p>Thêm ô <code>Glass Samples</code> và <code>Exposure Offset</code>. Vân gỗ sau kính giữ chi tiết tốt hơn với <code>Protect Texture Detail</code>. Nhận ra cả kính trong collection instance và Geometry Nodes.</p>
+      <div class="do">
+        <div class="hang truoc"><span>Trước</span><div class="thanh"><b data-w="100"></b></div><em>256,8 s</em></div>
+        <div class="hang sau"><span>Nay</span><div class="thanh"><b data-w="68"></b></div><em>174,0 s</em></div>
+      </div></div>
+    <div class="the hien"><h3><i>✨</i>Mượt hơn, sạch hơn</h3>
+      <ul>
+        <li>Chỗ đèn LED chiếu vào hết lốm đốm.</li>
+        <li>Cảnh 2000 vật liệu: bảng vẽ từ 1,7 s còn khoảng 0,1 s.</li>
+        <li>Hết lỗi Blender trên macOS sập sau mỗi lần render.</li>
+      </ul></div>
+  </div>
+</section>
+
+<!-- ================= RAM ================= -->
+<section class="addon" id="ram" style="--c:#b5f24a">
+  <div class="dau hien">
+    <div class="icon">🧊</div>
+    <div><h2>DP_RAMchill <span style="font-size:.55em;color:var(--mo)">· tặng kèm</span></h2>
+      <div class="ver"><span class="cu">0.3.5</span>→<span class="moi">0.4.0</span></div></div>
+  </div>
+  <p class="tom hien">Render cảnh nặng mà máy vẫn thở được.</p>
+  <div class="luoi-the">
+    <div class="the hien"><h3><i>🔺</i><code>Optimize Meshes</code> <span class="moi-tag">MỚI</span></h3>
+      <p>Bớt tam giác cả cảnh, dưới 1% điểm ảnh thay đổi. <code>Restore Original Meshes</code> trả lại lưới gốc.</p>
+      <div class="do">
+        <div class="hang truoc"><span>RAM</span><div class="thanh"><b data-w="100"></b></div><em>12.145 MB</em></div>
+        <div class="hang sau"><span>Nay</span><div class="thanh"><b data-w="79"></b></div><em>9.557 MB</em></div>
+      </div></div>
+    <div class="the hien"><h3><i>🗜️</i><code>Bake Options</code>: xuất JPG</h3>
+      <p>Bake ra JPG thay PNG, có ô <code>JPG Quality</code>. Một map 2K trên đĩa từ <b>7,6 MB còn 1,4 MB</b>. Nút <code>Bake Selected Objects</code> ép map của vật đang chọn, xuống tới 64 px.</p></div>
+    <div class="the hien"><h3><i>♻️</i>Trả RAM sau khi render</h3>
+      <p><code>Hand Memory Back After Render</code> và <code>Free Kept Render Data</code>. Cảnh phòng ngủ bật Persistent Data:</p>
+      <div class="do">
+        <div class="hang truoc"><span>Trước</span><div class="thanh"><b data-w="100"></b></div><em>4.676 MB</em></div>
+        <div class="hang sau"><span>Nay</span><div class="thanh"><b data-w="38"></b></div><em>1.798 MB</em></div>
+      </div></div>
+    <div class="the hien"><h3><i>🤝</i>Chơi đẹp với DP_Camera</h3>
+      <p>Batch nhiều camera ở chế độ Auto không còn làm sập khung nhìn. Dò cảnh mỗi camera nhanh hơn khoảng 3 lần.</p></div>
+  </div>
+</section>
+
+<footer class="chan">
+  <h2 style="font-size:1.6rem">Cập nhật thế nào?</h2>
+  <p>Mở Blender → panel N → tab <b>DP</b> → DP_Hub → bấm <b>Làm mới</b>, rồi <b>Update</b> ở từng addon.</p>
+  <a class="nut" href="https://ducphan2201-dev.github.io/dp-plugins/huongdan/">📘 Xem sổ tay hướng dẫn</a>
+  <small>Trang giới thiệu đợt cập nhật tháng 9/2026 · trang này chỉ để tạm thời</small>
+</footer>
+</main>
+
+<script>
+(function(){
+  var io=('IntersectionObserver' in window)?new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var el=e.target; el.classList.add('ra');
+      el.querySelectorAll('.thanh b').forEach(function(b){b.style.width=b.getAttribute('data-w')+'%';});
+      io.unobserve(el);
+    });
+  },{threshold:.15}):null;
+  document.querySelectorAll('.hien').forEach(function(el){
+    if(io) io.observe(el); else {el.classList.add('ra');el.querySelectorAll('.thanh b').forEach(function(b){b.style.width=b.getAttribute('data-w')+'%';});}
+  });
+  // dem so o hero
+  document.querySelectorAll('[data-dem]').forEach(function(el){
+    var n=+el.getAttribute('data-dem'),hau=el.getAttribute('data-hau')||'',t0=null;
+    function buoc(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/1400);el.textContent=Math.round(n*(1-Math.pow(1-p,3)))+hau;if(p<1)requestAnimationFrame(buoc);}
+    setTimeout(function(){requestAnimationFrame(buoc);},300);
+  });
+  // nav dang xem
+  var links=[].slice.call(document.querySelectorAll('nav a'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY+120,on=-1;
+    secs.forEach(function(s,i){if(s&&s.offsetTop<=y)on=i;});
+    links.forEach(function(a,i){a.classList.toggle('on',i===on);});
+  },{passive:true});
+})();
+</script>
+</body>
+</html>
