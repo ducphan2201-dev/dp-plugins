@@ -475,7 +475,7 @@ có sẵn một thư viện profile. Đây là lệnh quét duy nhất của add
 <tr><th>Lệnh</th><th>Làm</th></tr>
 <tr><td><b>Sweep Profile</b></td><td>Bấm lần lượt các điểm của đường dẫn.
 Giữ <kbd>Alt</kbd> rồi bấm một edge là <b>lấy cả vành</b>: chạy hết vòng
-quanh trần hay quanh mặt bàn trong một cú bấm. <kbd>Alt</kbd>+lăn chuột xoay
+quanh trần hay quanh mặt bàn trong một cú bấm. <kbd>Ctrl</kbd>+lăn chuột xoay
 profile. Chuột phải mở bảng chọn profile.</td></tr>
 <tr><td>Bảng profile</td><td>Thư viện profile có ảnh xem trước. Ô <b>W</b> và
 <b>H</b> đổi bề rộng, bề cao (mm), <b>Lock</b> giữ tỉ lệ; <b>Off X</b> và
@@ -484,6 +484,13 @@ profile. Chuột phải mở bảng chọn profile.</td></tr>
 ảnh).</td></tr>
 <tr><td><b>From Scene</b></td><td>Lấy một hình bạn đã vẽ trong cảnh làm profile, thay cho profile trong thư viện. <b>Back to the library</b> quay về thư
 viện.</td></tr>
+<tr><td>Hút phào cũ</td><td>Vẽ tiếp một cây phào đã có: đang trong lệnh Sweep
+Profile thì bấm <kbd>P</kbd>, con trỏ thành ống hút, bấm vào cây phào cũ — không
+cần chọn trước. Con trỏ đang nằm trên cây phào thì <kbd>P</kbd> hút ngay.
+<kbd>Esc</kbd> thôi hút, lệnh vẫn chạy. Hoặc chọn cây phào rồi bấm
+<b>From Scene</b>. Bảng nhận lại đúng profile, <b>W</b>/<b>H</b>,
+<b>Placement</b>, <b>Off X</b>/<b>Off Y</b>, <b>Mirror</b> và cả chiều xoay
+của cây cũ — khúc vẽ tiếp khớp với nó.</td></tr>
 <tr><td><b>Update</b></td><td>Dựng lại những cây phào đang chọn theo profile
 và thông số đang đặt.</td></tr>
 <tr><td><b>Slice</b></td><td>Bấm lên một cây phào để cắt nó ở đúng chỗ đó.
@@ -790,7 +797,7 @@ khuất. Thả phím ra là hết, không mắc kẹt ở chế độ xuyên.</t
 <tr><td><b>Nhân đôi chuột</b></td><td>Làm lại thao tác vừa xong, đúng khoảng
 vừa rồi (Extrude và Offset)</td></tr>
 <tr><td>Giữ <kbd>Ctrl</kbd> khi dời</td><td><b>Nhân bản</b> thay vì dời đi</td></tr>
-<tr><td><kbd>Ctrl</kbd>+lăn</td><td>Chia đều · đổi số cạnh</td></tr>
+<tr><td><kbd>Ctrl</kbd>+lăn</td><td>Chia đều · đổi số cạnh · xoay phào (Sweep)</td></tr>
 <tr><td><kbd>Esc</kbd></td><td>Bỏ lệnh <b>và bỏ chọn</b></td></tr>
 <tr><td><kbd>Space</kbd></td><td>Y như <kbd>Esc</kbd> (trong workspace)</td></tr>
 <tr><td><kbd>Enter</kbd></td><td>Xong lệnh, <b>giữ nguyên</b> phần đang chọn</td></tr>
@@ -942,6 +949,10 @@ thường. Con số bạn gõ vẫn là milimét thật trên hình.</p>
 <li><b>Place Texture</b> trong bảng chuột phải của Smart UV — bấm một điểm làm
     góc đầu tiên của ô map; mọi object đang chọn nhận chung một tấm map liền
     vân. Xem <a href="#trai-map-smart-uv">Trải map</a>.</li>
+<li><b>Hút phào cũ</b> trong Sweep Profile — đang trong lệnh bấm
+    <kbd>P</kbd> rồi bấm vào một cây phào đã vẽ: bảng nhận lại toàn bộ thông
+    số của cây cũ để vẽ tiếp. Xem
+    <a href="#phao-chi-sweep-profile">Phào chỉ</a>.</li>
 </ul>
 <h3>Thay đổi</h3>
 <ul>
