@@ -96,6 +96,9 @@ main{max-width:1180px;margin:0 auto;padding:30px 16px 60px}
 .o .d.x{width:60%}
 @keyframes bay{to{transform:translate(var(--dx),var(--dy))}}
 
+.clip{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#0e1422;margin:0 0 22px;box-shadow:0 24px 60px -30px #000}
+.clip video{display:block;width:100%;height:auto;aspect-ratio:16/9}
+.clip span{position:absolute;top:10px;right:10px;font-size:.72rem;font-weight:700;letter-spacing:.04em;background:#0b0f1acc;border:1px solid #ffffff22;border-radius:99px;padding:3px 10px;color:#fff}
 /* footer */
 .chan{margin-top:80px;text-align:center;padding:50px 16px;border-top:1px solid var(--line);color:var(--mo)}
 .chan .nut{display:inline-block;margin-top:18px;padding:12px 26px;border-radius:99px;background:linear-gradient(90deg,var(--a1),var(--a6));color:#fff;font-weight:700;text-decoration:none;box-shadow:0 10px 30px -10px var(--a1)}
@@ -144,6 +147,7 @@ main{max-width:1180px;margin:0 auto;padding:30px 16px 60px}
       <div class="ver"><span class="cu">1.6</span>→<span class="moi">1.7.1</span></div></div>
   </div>
   <p class="tom hien">Mọi addon bạn đã mua gom về <b>một cửa sổ riêng</b>, kéo ra ngoài khung Blender hoặc sang màn hình thứ hai. Mỗi addon là một ô, bên trong giống hệt panel N của addon đó.</p>
+  <div class="clip hien"><video autoplay loop muted playsinline preload="metadata" src="clip_hub.mp4"></video><span>Blender 5.2 · thao tác thật</span></div>
   <div class="luoi-the">
     <div class="the lon hien">
       <h3><i>✨</i>Mở cửa sổ DP <span class="moi-tag">MỚI</span></h3>
@@ -180,6 +184,7 @@ main{max-width:1180px;margin:0 auto;padding:30px 16px 60px}
       <div class="ver"><span class="cu">4.18.14</span>→<span class="moi">4.18.15</span></div></div>
   </div>
   <p class="tom hien">Nhập file .max chuẩn hơn: kính, bump, UV và đơn vị đều được sửa tận gốc.</p>
+  <div class="clip hien"><video autoplay loop muted playsinline preload="metadata" src="clip_max.mp4"></video><span>Blender 5.2 · thao tác thật</span></div>
   <div class="luoi-the">
     <div class="the hien"><h3><i>🪟</i>Kính xiên không còn hoá gương</h3>
       <p>Addon tự lật lại pháp tuyến của lưới kính bị ngược ngay sau khi nhập. File bếp thử: 13 trên 139 vật kính được sửa tự động.</p></div>
@@ -204,6 +209,7 @@ main{max-width:1180px;margin:0 auto;padding:30px 16px 60px}
       <div class="ver"><span class="cu">1.7.1</span>→<span class="moi">1.7.2</span></div></div>
   </div>
   <p class="tom hien">Đèn hắt tủ thông minh hơn, bảng Light Mix nhanh vượt trội.</p>
+  <div class="clip hien"><video autoplay loop muted playsinline preload="metadata" src="clip_light.mp4"></video><span>Blender 5.2 · thao tác thật</span></div>
   <div class="luoi-the">
     <div class="the hien"><h3><i>🧭</i>Đèn hắt tủ cùng một hướng</h3>
       <p>Chọn nhiều tấm cùng lúc, mọi đèn quay theo hướng dài nhất của cả cụm, không còn mỗi đèn một ngả. Hộp thoại <code>Cabinet Strip (Area)</code> có thêm hai ô: <code>Same direction for all</code> và <code>Rotate 90 degrees</code>.</p></div>
@@ -232,6 +238,7 @@ main{max-width:1180px;margin:0 auto;padding:30px 16px 60px}
       <div class="ver"><span class="cu">1.9.1</span>→<span class="moi">1.9.2</span></div></div>
   </div>
   <p class="tom hien">Render hàng loạt ổn định, ra ảnh đẹp ngay qua DP VFB.</p>
+  <div class="clip hien"><video autoplay loop muted playsinline preload="metadata" src="clip_cam.mp4"></video><span>Blender 5.2 · thao tác thật</span></div>
   <div class="luoi-the">
     <div class="the lon hien"><h3><i>🖥️</i>Batch render qua DP VFB <span class="moi-tag">MỚI</span></h3>
       <p>Máy có DP-OptimizeRender thì khối batch có thêm ô <code>Use DP VFB</code>. Mỗi camera đi qua cửa sổ DP VFB, tự chạy Glass Boost khi cảnh có kính, và file lưu ra đúng tấm bạn thấy. Batch cùng RAMchill Auto và Glass Boost: <b>27 camera, 0 lần sập</b>.</p></div>
@@ -250,6 +257,7 @@ main{max-width:1180px;margin:0 auto;padding:30px 16px 60px}
       <div class="ver"><span class="cu">0.7.0</span>→<span class="moi">0.7.1</span></div></div>
   </div>
   <p class="tom hien">Map của model được giữ lại, bump tính bằng độ sâu thật.</p>
+  <div class="clip hien"><video autoplay loop muted playsinline preload="metadata" src="clip_matpro.mp4"></video><span>Blender 5.2 · thao tác thật</span></div>
   <div class="luoi-the">
     <div class="the hien"><h3><i>🧷</i>Đổi preset không mất map</h3>
       <p>Map diffuse của model ở lại và nhận thông số mới. Muốn bỏ thì bấm nút mới <code>Drop model map</code> ở bảng <code>Image maps</code>. Hai vật dùng chung vật liệu vẫn giữ ảnh riêng của mình.</p></div>
@@ -274,6 +282,7 @@ main{max-width:1180px;margin:0 auto;padding:30px 16px 60px}
       <div class="ver"><span class="cu">2.2.5</span>→<span class="moi">2.2.6</span></div></div>
   </div>
   <p class="tom hien">36 lệnh vẽ CAD ngay trong Blender, nay có Mirror, Empty nhanh và mang phím tắt theo người.</p>
+  <div class="clip hien"><video autoplay loop muted playsinline preload="metadata" src="clip_sketch.mp4"></video><span>Blender 5.2 · thao tác thật</span></div>
   <div class="luoi-the">
     <div class="the hien"><h3><i>🪞</i>Lệnh <code>Mirror</code> <span class="moi-tag">MỚI</span></h3>
       <p>Lật ra bản đối xứng dùng chung mesh: sửa một bên, bên kia đổi theo. Không chọn gì thì lật cả collection.</p></div>
@@ -306,6 +315,7 @@ main{max-width:1180px;margin:0 auto;padding:30px 16px 60px}
       <div class="ver"><span class="cu">0.3.1</span>→<span class="moi">0.3.2</span></div></div>
   </div>
   <p class="tom hien">Cửa sổ render riêng DP VFB, và render nhanh hơn gấp nhiều lần.</p>
+  <div class="clip hien"><video autoplay loop muted playsinline preload="metadata" src="clip_opt.mp4"></video><span>Blender 5.2 · thao tác thật</span></div>
   <div class="luoi-the">
     <div class="the lon hien"><h3><i>🖥️</i>DP VFB — cửa sổ render riêng <span class="moi-tag">MỚI</span></h3>
       <p>Ảnh hiện dần trong lúc render, màu khớp ảnh render của Blender. <code>Quick adjustments</code> chỉnh nhanh mà không phải render lại. Menu Render có thêm <code>Open DP VFB</code>.</p></div>
@@ -338,6 +348,7 @@ main{max-width:1180px;margin:0 auto;padding:30px 16px 60px}
       <div class="ver"><span class="cu">0.3.5</span>→<span class="moi">0.4.0</span></div></div>
   </div>
   <p class="tom hien">Render cảnh nặng mà máy vẫn thở được.</p>
+  <div class="clip hien"><video autoplay loop muted playsinline preload="metadata" src="clip_ram.mp4"></video><span>Blender 5.2 · thao tác thật</span></div>
   <div class="luoi-the">
     <div class="the hien"><h3><i>🔺</i><code>Optimize Meshes</code> <span class="moi-tag">MỚI</span></h3>
       <p>Bớt tam giác cả cảnh, dưới 1% điểm ảnh thay đổi. <code>Restore Original Meshes</code> trả lại lưới gốc.</p>
@@ -393,6 +404,11 @@ main{max-width:1180px;margin:0 auto;padding:30px 16px 60px}
     secs.forEach(function(s,i){if(s&&s.offsetTop<=y)on=i;});
     links.forEach(function(a,i){a.classList.toggle('on',i===on);});
   },{passive:true});
+  // clip: chi chay khi dang nhin thay
+  var vio=('IntersectionObserver' in window)?new IntersectionObserver(function(es){
+    es.forEach(function(e){var v=e.target;if(e.isIntersecting){var p=v.play();if(p&&p.catch)p.catch(function(){});}else v.pause();});
+  },{threshold:.25}):null;
+  document.querySelectorAll('.clip video').forEach(function(v){if(vio)vio.observe(v);});
 })();
 </script>
 </body>
